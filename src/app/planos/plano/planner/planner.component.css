@@ -30,6 +30,10 @@
     margin:5px 0px;
 }
 
+button mat-icon-button {
+    z-index:4;
+}
+
 
 mat-panel-title mat-card-title{
     font-size: 13pt;

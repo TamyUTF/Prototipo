@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlannerComponent implements OnInit {
 
+  planner = {nome: 'Plano 1',
+            tipos: ['tipo 1', 'tipo 2'],
+            resposavel: 'Responsável 1',
+            inicio: Date,
+            fim: Date,
+            pertence: '',
+            detalhe: {
+              descricao: '',
+              interessados: [ ],
+              custos: ''
+            }
+  };
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }
