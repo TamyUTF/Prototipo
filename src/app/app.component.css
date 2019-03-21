@@ -1,0 +1,32 @@
+mat-toolbar {
+    background-color: rgb(20, 93, 167);
+    color: #fff;
+    margin: 0;
+    flex-direction: row;
+    display: flex;
+    place-content: center flex-start;
+    align-items: center;
+}
+
+.container {
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center space-around;
+    align-items: center;
+}
+.user-nav {
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+.user-info {
+    display: block;
+    line-height: 8px;
+}
+
+.user-info mat-card-subtitle {
+    margin: 0;
+}
+
