@@ -8,12 +8,47 @@
     margin: 10px 0px;
     box-shadow: 2px 2px 3px rgb(0, 0, 0, .2);
     border-left: 5px solid rgb(61, 150, 223);
+    display: flex;
+    align-items: baseline;
 }
 
 .card-title h2 {
     margin: 20px 0px 20px 40px;
     color: #575757;
+    width: 100%;
 }
+
+.card-title button {
+    background-color: rgb(61, 150, 223);
+}
+
+.card-title mat-icon {
+    font-size: 20pt;
+    color: #fff;
+    padding: 0px 5px 5px 3px;
+}
+
+.planner-list {
+    width: 100%;
+    box-shadow: 2px 2px 3px rgb(0, 0, 0, .2);
+}
+
+.planner-item {
+    margin: 0px 10px;
+}
+.mat-list-item mat-divider {
+    width: 98%;
+}
+
+.planner-item h4 {
+    font-weight: bold;
+}
+
+.planner-item p {
+    font-size: 10pt;
+    color:  #575757;
+}
+
 
 .planner1 {
     border-left: 5px solid #ff2b2b;
@@ -30,20 +65,3 @@
     margin:5px 0px;
 }
 
-button mat-icon-button {
-    z-index:4;
-}
-
-
-mat-panel-title mat-card-title{
-    font-size: 13pt;
-    position: relative;
-}
-
-mat-panel-title at-card-subtitle{
-    font-size: 10pt;
-}
-
-mat-panel-title {
-    font-weight: bold;
-}
