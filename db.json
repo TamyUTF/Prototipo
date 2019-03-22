@@ -1,0 +1,18 @@
+{
+  "planner": [
+    { "id": 1, 
+      "name": "Plano 1", 
+      "type": ["Tipo 1", "Tipo 2","Tipo 3"],
+      "charge": "Responsável 1",
+      "start":"24/03/2019",
+      "end": "24/05/2019",
+      "belongsTo":"Plano 2",
+      "details": {
+        "description":{
+        "involveds": ["Envolvido 1", "Envolvido 2", "Envolvido 3"],
+        "price": 300.00
+        }
+      }
+      }
+  ]
+}
