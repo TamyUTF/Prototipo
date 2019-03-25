@@ -1,5 +1,5 @@
 {
-  "planner": [
+  "planners": [
     { "id": 1, 
       "name": "Plano 1", 
       "type": ["Tipo 1", "Tipo 2","Tipo 3"],
@@ -8,11 +8,20 @@
       "end": "24/05/2019",
       "belongsTo":"Plano 2",
       "details": {
-        "description":{
+        "description": "Plano 1 referente aos planos para tomada de decisões.",
         "involveds": ["Envolvido 1", "Envolvido 2", "Envolvido 3"],
-        "price": 300.00
-        }
+        "price": 300.00  
       }
       }
+  ],
+  "planner":[
+    {"type": "Tipo 1"},
+    {"type": "Tipo 2"},
+    {"type": "Tipo 3"}
+  ],
+  "involveds":[
+    {"involved":"Envolvido 1"},
+    {"involved":"Envolvido 2"},
+    {"involved":"Envolvido 3"}
   ]
 }

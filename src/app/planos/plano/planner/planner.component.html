@@ -1,14 +1,14 @@
 <mat-card class="card-title">
     <h2>Meus planos</h2>
-    <button mat-fab (click)="openModal()">
+    <button mat-fab (click)="new()">
       <mat-icon >add</mat-icon>
     </button>
   </mat-card>
 
-  <div class = "planner-list">
-    <mat-list role="list">
+  <div class = "planner-list" *ngIf = "(this.plannerService.planners$ | async) as planners">
+    <mat-list role="list" *ngFor = "let planner of planners">
       <mat-list-item class = "planner-item">
-        <h4 mat-line>Plano 1</h4>
+        <h4 mat-line>{{planner.name}}</h4>
         <p mat-line>Status</p>
         <p mat-line>Data</p>
 
@@ -16,7 +16,7 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="edit(planner)">
               <mat-icon>edit</mat-icon>
               <span>Editar</span>
             </button>
@@ -49,8 +49,6 @@
         </mat-menu> 
         <mat-divider></mat-divider>
       </mat-list-item>
-      <mat-list-item role="listitem">Plano 2</mat-list-item>
-      <mat-list-item role="listitem">Plano 3</mat-list-item>
     </mat-list>
   </div>
   

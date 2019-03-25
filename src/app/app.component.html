@@ -1,4 +1,7 @@
 <mat-toolbar>
+  <button  mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
   <h2>Qualiex</h2>
   <h5>Planner</h5>
   <div class="user-nav">
@@ -11,6 +14,14 @@
 
   </div>
 </mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [opened]="opened">
+    <mat-sidenav-content>
+      
+    </mat-sidenav-content>
+
+  </mat-sidenav>
+</mat-sidenav-container>
 
 <div class="container">
   <app-planner></app-planner>

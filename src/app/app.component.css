@@ -1,7 +1,8 @@
-mat-toolbar {
+.mat-toolbar {
     background-color: rgb(20, 93, 167);
     color: #fff;
     margin: 0;
+    padding: 5px 0px;
     flex-direction: row;
     display: flex;
     place-content: center flex-start;
@@ -16,6 +17,7 @@ mat-toolbar {
     place-content: center space-around;
     align-items: center;
 }
+
 .user-nav {
     display: flex;
     place-content: center;

@@ -14,5 +14,11 @@
 
 form {
     margin: 10px;
-
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: stretch space-evenly;
+    align-items: stretch;
+    max-width: 100%;
 }

@@ -1,12 +1,15 @@
 <mat-toolbar>
-    <h2>Cadastrar plano</h2>
+    <h2 *ngIf = "edit">Cadastrar plano</h2>
+    <h2 *ngIf = "!edit">Editar plano</h2>
   </mat-toolbar>
 <mat-dialog-content class="container">
-  <mat-tab-group>
-    <mat-tab label="Geral">  
+  <mat-tab-group [selectedIndex]="selectedIndex">
+    <mat-tab label="Geral"
+              >  
       <form [formGroup]="form">
         <mat-form-field>
-          <input  matInput max-length="200" 
+          <input  hideRequiredMarker = "true"
+                  matInput max-length="200" 
                   placeholder = "Nome (o que?)" 
                   floatLabel = "always"
                   formControlName = "name" />
@@ -14,24 +17,29 @@
         <mat-form-field>
           <mat-select placeholder = "Tipo do plano" 
                       floatLabel = "always"
-                      formControlName = "types" >
+                      formControlName = "types"
+                      hideRequiredMarker = "true">
+
           </mat-select>            
         </mat-form-field>
         <mat-form-field>
           <input  matInput  placeholder = "Responsável (quem?)" 
                             floatLabel = "always"
-                            formControlName = "charge" />
+                            formControlName = "charge"
+                            hideRequiredMarker = "true" />
         </mat-form-field>
         <mat-form-field>
-          <input  matInput  placeholder = "Início" 
-                            [matDatepicker] ="pickerStart"
-                            floatLabel = "always"
-                            formControlName = "start" />
+          <input matInput [formControl] = "minDate"
+                          placeholder = "Início" 
+                          [matDatepicker] ="pickerStart"
+                          floatLabel = "always"
+                          formControlName = "start" />
           <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
           <mat-datepicker #pickerStart></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input  matInput  placeholder = "Fim" 
+          <input  matInput  [min] = "minDate.value"
+                            placeholder = "Fim" 
                             [matDatepicker] ="pickerEnd"
                             floatLabel = "always"
                             formControlName = "end" />
@@ -39,15 +47,16 @@
           <mat-datepicker #pickerEnd></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <mat-select  matInput  placeholder = "Pertence ao plano" 
+          <input  matInput  placeholder = "Pertence ao plano" 
                             floatLabel = "always"
-                            formControlName = "belongsTo" >
-          </mat-select>                 
+                            formControlName = "belongsTo" >               
         </mat-form-field>
+        <button mat-raised-button
+                (click)="nextIndex()" >Próximo</button>
       </form>
     </mat-tab>
     <mat-tab label="Detalhes">
-      <form [formGroup] = "form">
+      <form [formGroup] = "form" (ngSubmit)="submit()">
         <div formGroupName = details>
           <mat-form-field>
           <textarea matInput placeholder="Descrição"
@@ -57,7 +66,8 @@
         </mat-form-field>
         <mat-form-field>
           <mat-select placeholder="Pessoas interessadas"
-                      formControlName = "description">
+                      formControlName = "description"
+                      multiple>            
           </mat-select>
         </mat-form-field>
         <mat-form-field>
@@ -65,7 +75,8 @@
           <input matInput placeholder="Custo estimado"/>
         </mat-form-field>
         </div>
-        
+        <button mat-raised-button (click)="backIndex()">Voltar</button>
+        <button mat-raised-button type="submit">Enviar</button>
       </form>
     </mat-tab>  
   </mat-tab-group>
