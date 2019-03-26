@@ -12,6 +12,16 @@
     align-items: baseline;
 }
 
+.mat-list-base {
+    display: contents;
+}
+
+.subPlanner-list .mat-list-item {
+    margin-left: 10px;
+    padding-left: 40px;
+    box-sizing: border-box;
+}
+
 .card-title h2 {
     margin: 20px 0px 20px 40px;
     color: #575757;

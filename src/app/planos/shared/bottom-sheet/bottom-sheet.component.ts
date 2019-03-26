@@ -37,6 +37,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   minDate = new FormControl(new Date());
   id: string;
   subsModal: Subscription;
+  subsForm: Subscription;
   edit = false;
   planner$: Observable<Planner>;
 
@@ -54,10 +55,22 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
     this.subsModal.unsubscribe();
   }
 
+  onSubmit() {
+    console.log(this.form.value);
+
+    this.subsForm = this.plannersService.createPlanner(this.form.value)
+    .subscribe(res => {
+      this.plannersService.openSnackBar('Plano criado com sucesso!', 'Oba!');
+    },
+    error => console.error(error));
+  }
+
   openModal(str: string) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.direction = 'ltr';
+    dialogConfig.width = '250px';
+    dialogConfig.height = '280px';
     dialogConfig.data = {
       type: str
     };

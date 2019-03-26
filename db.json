@@ -17,6 +17,39 @@
         ],
         "price": 300
       }
+    },
+    {
+      "id": 2,
+      "name": "Plano 2",
+      "types": "Tipo 3",
+      "charge": "Tamyres ",
+      "start": null,
+      "end": null,
+      "belongsTo": null,
+      "details": {
+        "description": [
+          "Envolvido 2",
+          "Envolvido 3"
+        ],
+        "involveds": null,
+        "price": null
+      }
+    },
+    {
+      "id": 3,
+      "name": "Plano 3",
+      "types": "Tipo 3",
+      "charge": "Fulaninho",
+      "start": null,
+      "end": "2019-03-27T03:00:00.000Z",
+      "belongsTo": "Plano 2",
+      "details": {
+        "description": [
+          "Envolvido 3"
+        ],
+        "involveds": null,
+        "price": null
+      }
     }
   ],
   "types": [

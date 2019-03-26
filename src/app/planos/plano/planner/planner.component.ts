@@ -62,31 +62,5 @@ export class PlannerComponent implements OnInit, OnDestroy {
     });
   }
 
-  openModal(planner) { // cria um novo plano
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.autoFocus = true;
-    dialogConfig.direction = 'ltr';
-    dialogConfig.width = '700px';
-    dialogConfig.height = '500px';
-    dialogConfig.data = {
-      id: planner.id,
-      name: planner.name,
-      types: planner.types,
-      charge: planner.charge,
-      start: planner.start,
-      end: planner.end,
-      belongsTo: planner.attachment,
-      details: {
-        description: planner.description,
-        involveds: planner.involveds,
-        price: planner.price
-      }
-    };
-    const dialogRef = this.modal.open(ModalFormComponent, dialogConfig);
-    this.subs = dialogRef.afterClosed().subscribe(data => {
-      this.router.navigate(['']);
-    });
-  }
 
 }

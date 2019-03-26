@@ -33,7 +33,9 @@ export class ModalFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subs.unsubscribe();
+    if (this.subs !== undefined) {
+      this.subs.unsubscribe();
+    }
   }
 
   onSubmit() {

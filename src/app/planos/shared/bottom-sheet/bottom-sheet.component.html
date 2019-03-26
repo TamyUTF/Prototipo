@@ -60,8 +60,7 @@
         <mat-select placeholder = "Pertence ao plano" 
                     floatLabel = "always"
                     formControlName = "belongsTo">
-          <mat-option value="none">
-            {{Nenhum}}
+          <mat-option value="none">Nenhum
           </mat-option>          
           <mat-option *ngFor = "let planner of plannersService.planners$ | async" [value]="planner.name">
             {{planner.name}}
@@ -73,7 +72,7 @@
     </form>
   </mat-tab>
   <mat-tab label="Detalhes">
-    <form [formGroup] = "form" (ngSubmit)="submit()">
+    <form [formGroup] = "form" (ngSubmit)="onSubmit()">
       <div formGroupName = details>
         <mat-form-field>
         <textarea matInput placeholder="Descrição"
