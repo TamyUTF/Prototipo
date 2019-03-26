@@ -1,0 +1,102 @@
+<mat-toolbar>
+  <h2 *ngIf = "!edit">Cadastrar plano</h2>
+  <h2 *ngIf = "edit">Editar plano</h2>
+</mat-toolbar>
+<mat-dialog-content class="container">
+<mat-tab-group [selectedIndex]="selectedIndex">
+  <mat-tab label="Geral"
+            >  
+    <form [formGroup]="form">
+      <mat-form-field>
+        <input  hideRequiredMarker = "true"
+                matInput max-length="200" 
+                placeholder = "Nome (o que?)" 
+                floatLabel = "always"
+                formControlName = "name" />
+      </mat-form-field>
+      <div class = "planner-type">
+        <mat-form-field>
+        <mat-select placeholder = "Tipo do plano" 
+                    floatLabel = "always"
+                    formControlName = "types"
+                    hideRequiredMarker = "true">
+          <mat-option *ngFor = "let type of types" [value]="type.type">
+            {{type.type}}
+          </mat-option>
+         </mat-select>            
+        </mat-form-field>
+        <button mat-icon-button (click)="openModal()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <mat-form-field>
+        <input  matInput  placeholder = "Responsável (quem?)" 
+                          floatLabel = "always"
+                          formControlName = "charge"
+                          hideRequiredMarker = "true" />
+      </mat-form-field>
+      <div class="planner-date">
+        <mat-form-field>
+          <input matInput [formControl] = "minDate"
+                          placeholder = "Início" 
+                          [matDatepicker] ="pickerStart"
+                          floatLabel = "always"
+                          formControlName = "start" />
+          <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerStart></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input  matInput  [min] = "minDate.value"
+                            placeholder = "Fim" 
+                            [matDatepicker] ="pickerEnd"
+                            floatLabel = "always"
+                            formControlName = "end" />
+          <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+          <mat-datepicker #pickerEnd></mat-datepicker>
+        </mat-form-field>
+      </div>
+      
+      <mat-form-field>
+        <mat-select placeholder = "Pertence ao plano" 
+                    floatLabel = "always"
+                    formControlName = "belongsTo">
+
+        </mat-select>
+             
+      </mat-form-field>
+      <button mat-raised-button
+              (click)="nextIndex()" >Próximo</button>
+    </form>
+  </mat-tab>
+  <mat-tab label="Detalhes">
+    <form [formGroup] = "form" (ngSubmit)="submit()">
+      <div formGroupName = details>
+        <mat-form-field>
+        <textarea matInput placeholder="Descrição"
+                  max-length = "1000"
+                  formControlName = "description">
+        </textarea>
+      </mat-form-field>
+      <div class="planner-involveds">
+        <mat-form-field>
+          <mat-select placeholder="Pessoas interessadas"
+                      formControlName = "description"
+                      multiple>            
+          </mat-select>
+        </mat-form-field>
+        <button mat-icon-button>
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <mat-form-field>
+        <span matPrefix>R$</span>
+        <input matInput placeholder="Custo estimado"/>
+      </mat-form-field>
+      </div>
+      <button mat-raised-button (click)="backIndex()">Voltar</button>
+      <button mat-raised-button type="submit">Enviar</button>
+    </form>
+  </mat-tab>  
+</mat-tab-group>
+</mat-dialog-content>

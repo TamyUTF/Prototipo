@@ -7,7 +7,7 @@ import { MaterialModule } from './shared/material';
 import { MatNativeDateModule } from '@angular/material';
 import { PlannerInfoComponent } from './plano/plano-info/planner-info.component';
 import { PlannerRoutingModule } from './shared/planner.routing.module';
-
+import { BottomSheetComponent } from './shared/bottom-sheet/bottom-sheet.component';
 @NgModule({
     imports : [
         FormsModule,
@@ -19,7 +19,8 @@ import { PlannerRoutingModule } from './shared/planner.routing.module';
     ],
     declarations: [
         PlannerComponent,
-        PlannerInfoComponent
+        PlannerInfoComponent,
+        BottomSheetComponent
     ],
     exports: [
         PlannerComponent

@@ -14,7 +14,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
 @NgModule({
     exports: [
@@ -32,7 +33,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
         MatTabsModule,
         MatDatepickerModule,
         MatDividerModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatBottomSheetModule
     ]
 })
 

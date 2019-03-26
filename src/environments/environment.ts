@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: 'http://localhost:3000/planners'
+  API: 'http://localhost:3000/'
 };
 
 /*

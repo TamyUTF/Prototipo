@@ -1,7 +1,7 @@
 export interface Planner {
     id: string;
     name: string;
-    types: [string];
+    type: [string];
     charge: string;
     start: Date;
     end: Date;

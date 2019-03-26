@@ -10,7 +10,7 @@ import { Planner } from './planner.model';
 })
 export class PlannerService implements OnDestroy {
     constructor(private http: HttpClient) { }
-    readonly apiUrl = `${environment.API}`;
+    readonly apiUrl = `${environment.API}planners`;
     planners$: Observable<Planner[]>;
 
     list() {
@@ -34,7 +34,7 @@ export class PlannerService implements OnDestroy {
     }
 
     createPlanner(id: string, planner: Planner) {
-        return this.http.post<Planner>(`${this.apiUrl}/${id}`, planner);
+        return this.http.post<Planner>(this.apiUrl, planner);
     }
 
     ngOnDestroy() {

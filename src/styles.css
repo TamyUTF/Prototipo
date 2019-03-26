@@ -13,4 +13,6 @@ body {
 .mat-tab-body-content {
     overflow: hidden !important;
 }
-
+.mat-bottom-sheet-container {
+    padding: 0px !important;
+}

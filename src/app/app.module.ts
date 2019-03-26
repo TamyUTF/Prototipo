@@ -10,6 +10,8 @@ import { PlannerModule } from './planos/planner.module';
 import { ModalFormComponent } from './planos/shared/modal/modal-form.component';
 import { PlannerService } from './planos/shared/planner.service';
 import { AppRoutingModule } from './app.routing.module';
+import { InvolvedsService } from './planos/shared/involveds.service';
+import { TypesService } from './planos/shared/types.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { AppRoutingModule } from './app.routing.module';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [PlannerService],
+  providers: [PlannerService, TypesService, InvolvedsService],
   bootstrap: [AppComponent],
   entryComponents: [ModalFormComponent]
 })

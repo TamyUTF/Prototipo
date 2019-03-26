@@ -1,6 +1,6 @@
 import { ModalFormComponent } from './modal/modal-form.component';
 import { RouterModule } from '@angular/router';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { PlannerComponent } from './../plano/planner/planner.component';
 import { PlannerInfoComponent } from '../plano/plano-info/planner-info.component';

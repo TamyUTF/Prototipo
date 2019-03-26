@@ -2,7 +2,7 @@
   "planners": [
     { "id": 1, 
       "name": "Plano 1", 
-      "type": ["Tipo 1", "Tipo 2","Tipo 3"],
+      "type": "Tipo 1",
       "charge": "Responsável 1",
       "start":"24/03/2019",
       "end": "24/05/2019",
@@ -14,7 +14,7 @@
       }
       }
   ],
-  "planner":[
+  "types":[
     {"type": "Tipo 1"},
     {"type": "Tipo 2"},
     {"type": "Tipo 3"}
