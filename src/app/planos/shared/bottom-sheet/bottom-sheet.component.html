@@ -20,12 +20,12 @@
                     floatLabel = "always"
                     formControlName = "types"
                     hideRequiredMarker = "true">
-          <mat-option *ngFor = "let type of types" [value]="type.type">
+          <mat-option *ngFor = "let type of typesService.types$ | async" [value]="type.type">
             {{type.type}}
           </mat-option>
          </mat-select>            
         </mat-form-field>
-        <button mat-icon-button (click)="openModal()">
+        <button mat-icon-button (click)="openModal('type')">
           <mat-icon>add</mat-icon>
         </button>
       </div>
@@ -60,9 +60,13 @@
         <mat-select placeholder = "Pertence ao plano" 
                     floatLabel = "always"
                     formControlName = "belongsTo">
-
-        </mat-select>
-             
+          <mat-option value="none">
+            {{Nenhum}}
+          </mat-option>          
+          <mat-option *ngFor = "let planner of plannersService.planners$ | async" [value]="planner.name">
+            {{planner.name}}
+          </mat-option>
+        </mat-select>       
       </mat-form-field>
       <button mat-raised-button
               (click)="nextIndex()" >Próximo</button>
@@ -81,10 +85,13 @@
         <mat-form-field>
           <mat-select placeholder="Pessoas interessadas"
                       formControlName = "description"
-                      multiple>            
+                      multiple> 
+            <mat-option *ngFor="let involved of involvedsService.involveds$ | async" [value]="involved.involved">
+              {{involved.involved}}
+            </mat-option>                     
           </mat-select>
         </mat-form-field>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="openModal('involved')">
           <mat-icon>add</mat-icon>
         </button>
       </div>

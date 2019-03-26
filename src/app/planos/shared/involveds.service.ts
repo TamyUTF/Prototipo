@@ -20,7 +20,7 @@ export class InvolvedsService implements OnDestroy {
         return this.http.get<any[]>(this.apiUrl);
     }
 
-    createPlanner(id: string, involved: any) {
+    createInvolved(involved: any) {
         return this.http.post<any>(this.apiUrl, involved);
     }
 

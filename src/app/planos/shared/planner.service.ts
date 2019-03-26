@@ -33,7 +33,7 @@ export class PlannerService implements OnDestroy {
         return this.http.put<Planner>(`${this.apiUrl}/${id}`, planner);
     }
 
-    createPlanner(id: string, planner: Planner) {
+    createPlanner(planner: Planner) {
         return this.http.post<Planner>(this.apiUrl, planner);
     }
 

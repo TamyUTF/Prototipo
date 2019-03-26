@@ -3,9 +3,23 @@
     <h2 *ngIf = "!type">Cadastrar Pessoas</h2>
   </mat-toolbar>
 <mat-dialog-content class="container">
-  <form>
-    <mat-form-field>
-      <input/>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field *ngIf = "type">
+      <input  matInput 
+              placeholder= "Tipo de plano"
+              floatLabel= "always"
+              formControlName = "type"/>
     </mat-form-field>
-  </form>
+
+    <mat-form-field *ngIf = "!type">
+        <input  matInput 
+                placeholder= "Nome"
+                floatLabel= "always"
+                formControlName = "involved"/>
+      </mat-form-field>
+      <div class="modal-buttons">
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
+        <button mat-raised-button type="submit">Confirmar</button>
+      </div>
+    </form>
 </mat-dialog-content>

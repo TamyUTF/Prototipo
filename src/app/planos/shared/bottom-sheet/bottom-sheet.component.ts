@@ -3,12 +3,12 @@ import { TypesService } from './../types.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
+import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA, MatDialog, MatDialogConfig } from '@angular/material';
 import { Subscription, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { PlannerService } from '../planner.service';
 import { Planner } from '../planner.model';
+import { ModalFormComponent } from '../modal/modal-form.component';
 
 @Component({
   selector: 'app-bottom-sheet',
@@ -19,30 +19,28 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
 
   constructor(private bottomSheetRef: MatBottomSheetRef<BottomSheetComponent>,
               @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
+              private modal: MatDialog,
               private fBuilder: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private plannerService: PlannerService,
+              private plannersService: PlannerService,
               private typesService: TypesService,
               private involvedsService: InvolvedsService) {
     this.createForm();
     this.typesService.list();
     this.involvedsService.list();
-    this.plannerService.list();
+    this.plannersService.list();
   }
 
   form: FormGroup;
   selectedIndex = 0;
   minDate = new FormControl(new Date());
   id: string;
-  subs: Subscription;
+  subsModal: Subscription;
   edit = false;
   planner$: Observable<Planner>;
-  types: any;
 
   ngOnInit() {
-    this.typesService.getAll().subscribe(types => this.types = types);
-    console.log(this.types);
     console.log(this.data);
     if (this.data != null) {
       this.edit = false;
@@ -53,7 +51,26 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subs.unsubscribe();
+    this.subsModal.unsubscribe();
+  }
+
+  openModal(str: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.direction = 'ltr';
+    dialogConfig.data = {
+      type: str
+    };
+    const dialogRef = this.modal.open(ModalFormComponent, dialogConfig);
+
+    this.subsModal = dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res === 'type') {
+        this.typesService.list();
+      } else if (res === 'involved') {
+        this.involvedsService.list();
+      }
+    });
   }
 
   createForm() {

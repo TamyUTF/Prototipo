@@ -20,7 +20,7 @@ export class TypesService implements OnDestroy {
         return this.http.get<any[]>(this.apiUrl);
     }
 
-    createPlanner(id: string, type: any) {
+    createType(type: any) {
         return this.http.post<any>(this.apiUrl, type);
     }
 
