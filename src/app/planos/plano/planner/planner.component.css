@@ -41,6 +41,7 @@
 .planner-list {
     width: 100%;
     box-shadow: 2px 2px 3px rgb(0, 0, 0, .2);
+    margin-bottom: 10px;
 }
 
 .planner-item {

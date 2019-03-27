@@ -2,10 +2,14 @@ import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatBottomSheet, MatBottomSheetConfig} from '@angular/material';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 import { ModalFormComponent } from './../../shared/modal/modal-form.component';
 import { PlannerService } from './../../shared/planner.service';
 import { BottomSheetComponent } from './../../shared/bottom-sheet/bottom-sheet.component';
+import { InvolvedsService } from './../../shared/involveds.service';
+import { TypesService } from './../../shared/types.service';
 
 @Component({
   selector: 'app-planner',
@@ -17,14 +21,24 @@ export class PlannerComponent implements OnInit, OnDestroy {
   constructor(private modal: MatDialog,
               private plannerService: PlannerService,
               private router: Router,
-              private bottomSheet: MatBottomSheet) { }
+              private bottomSheet: MatBottomSheet,
+              private typesService: TypesService,
+              private involvedsService: InvolvedsService) {
+                this.typesService.list();
+                this.involvedsService.list();
+                this.plannerService.list();
+               }
   subs: Subscription;
+  deleteSubs: Subscription;
   ngOnInit() {
-    this.plannerService.list();
+
   }
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+    if (this.deleteSubs) {
+      this.deleteSubs.unsubscribe();
+    }
   }
 
   edit(planner) {
@@ -32,15 +46,32 @@ export class PlannerComponent implements OnInit, OnDestroy {
     this.openBottomSheet(planner);
   }
 
+  view(planner) {
+    this.router.navigate(['planner', planner.id]);
+    this.openModalInfo();
+  }
+
   create() {
     this.router.navigate(['new']);
     this.openBottomSheet();
   }
 
-  openBottomSheet(data?) {
+  delete(planner) {
+    this.deleteSubs = this.plannerService.deletePlanner(planner.id).subscribe(
+      res => {
+        this.plannerService.openSnackBar('Plano deletado com sucesso.', 'Ok!');
+        this.plannerService.list();
+      },
+      error => console.error(error)
+    );
+  }
+
+  openBottomSheet(data?: any) {
     const matConfig = new MatBottomSheetConfig();
+    let bottomSheetRef: any;
     matConfig.autoFocus = true;
-    if (data !== undefined) {
+
+    if ((data !== undefined ) && ( data !== null)) {
       matConfig.data = {
         id: data.id,
         name: data.name,
@@ -50,13 +81,16 @@ export class PlannerComponent implements OnInit, OnDestroy {
         end: data.end,
         belongsTo: data.belongsTo,
         details: {
-          description: data.description,
-          involveds: data.involveds,
-          price: data.price
+          description: data.details.description,
+          involveds: data.details.involveds,
+          price: data.details.price
         }
       };
+      bottomSheetRef = this.bottomSheet.open(BottomSheetComponent, matConfig);
+    } else if (data == null) {
+      bottomSheetRef = this.bottomSheet.open(BottomSheetComponent, matConfig);
     }
-    const bottomSheetRef = this.bottomSheet.open(BottomSheetComponent);
+
     this.subs = bottomSheetRef.afterDismissed().subscribe((res: any) => {
       console.log(res);
     });

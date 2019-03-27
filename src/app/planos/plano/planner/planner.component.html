@@ -6,11 +6,16 @@
   </mat-card>
 
   <div class = "planner-list" *ngIf = "(plannerService.planners$ | async) as planners">
-    <mat-list role="dense" *ngFor = "let planner of planners">
-      <mat-list-item class = "planner-item" *ngIf = "planner.belongsTo === null">
+    <mat-list role="list" 
+              *ngFor = "let planner of planners"
+              >
+      <mat-list-item  class = "planner-item" 
+                      *ngIf = "planner.belongsTo === null || planner.belongsTo === 'none'"
+                      (click)="view(planner)">
         <h4 mat-line>{{planner.name}}</h4>
         <p mat-line >Status</p>
-        <p mat-line > Data
+        <p mat-line > {{planner.start | date: 'dd/MM/yyyy'}}
+                      {{planner.end | date: 'dd/MM/yyyy'}}
         </p>
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
@@ -24,7 +29,7 @@
               <mat-icon>shutter_speed</mat-icon>
               <span>Mudar status</span>
             </button>
-            <button mat-menu-item >
+            <button mat-menu-item (click)='delete(planner)'>
                 <mat-icon>delete</mat-icon>
                 <span>Remover</span>
               </button>
@@ -50,14 +55,17 @@
       </mat-list-item> 
         <mat-divider></mat-divider>
           <mat-list class="subPlanner-list" *ngFor = "let subPlanner of plannerService.planners$ | async">
-            <mat-list-item *ngIf = "subPlanner.belongsTo === planner.name">
+            <mat-list-item  *ngIf = "subPlanner.belongsTo === planner.name"
+                            (click)="view(subPlanner)">
                 <h4 mat-line>{{subPlanner.name}}</h4>
                 <p mat-line >Status</p>
+                <p mat-line>{{subPlanner.start | date: 'dd/MM/yyyy'}}
+                            {{subPlanner.end | date: 'dd/MM/yyyy'}}</p>
                 <button mat-icon-button [matMenuTriggerFor]="menu">
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="edit(planner)">
+                    <button mat-menu-item (click)="edit(subPlanner)">
                       <mat-icon>edit</mat-icon>
                       <span>Editar</span>
                     </button>
@@ -65,7 +73,7 @@
                       <mat-icon>shutter_speed</mat-icon>
                       <span>Mudar status</span>
                     </button>
-                    <button mat-menu-item >
+                    <button mat-menu-item (click)="delete(subPlanner)">
                         <mat-icon>delete</mat-icon>
                         <span>Remover</span>
                       </button>

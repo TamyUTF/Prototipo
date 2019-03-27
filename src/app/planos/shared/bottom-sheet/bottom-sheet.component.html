@@ -18,9 +18,10 @@
         <mat-form-field>
         <mat-select placeholder = "Tipo do plano" 
                     floatLabel = "always"
-                    formControlName = "types"
+                    formControlName = "type"
                     hideRequiredMarker = "true">
-          <mat-option *ngFor = "let type of typesService.types$ | async" [value]="type.type">
+          <mat-option *ngFor = "let type of typesService.types$ | async" 
+                      [value]="type.type">
             {{type.type}}
           </mat-option>
          </mat-select>            
@@ -37,7 +38,7 @@
       </mat-form-field>
       <div class="planner-date">
         <mat-form-field>
-          <input matInput [formControl] = "minDate"
+          <input matInput [(ngModel)] = "minDate"
                           placeholder = "Início" 
                           [matDatepicker] ="pickerStart"
                           floatLabel = "always"
@@ -46,7 +47,7 @@
           <mat-datepicker #pickerStart></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input  matInput  [min] = "minDate.value"
+          <input  matInput  [min] = "minDate"
                             placeholder = "Fim" 
                             [matDatepicker] ="pickerEnd"
                             floatLabel = "always"
@@ -83,7 +84,7 @@
       <div class="planner-involveds">
         <mat-form-field>
           <mat-select placeholder="Pessoas interessadas"
-                      formControlName = "description"
+                      formControlName = "involveds"
                       multiple> 
             <mat-option *ngFor="let involved of involvedsService.involveds$ | async" [value]="involved.involved">
               {{involved.involved}}
@@ -97,7 +98,8 @@
 
       <mat-form-field>
         <span matPrefix>R$</span>
-        <input matInput placeholder="Custo estimado"/>
+        <input matInput placeholder="Custo estimado"
+                        formControlName = "price"/>
       </mat-form-field>
       </div>
       <button mat-raised-button (click)="backIndex()">Voltar</button>

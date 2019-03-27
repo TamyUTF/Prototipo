@@ -27,14 +27,11 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
               private typesService: TypesService,
               private involvedsService: InvolvedsService) {
     this.createForm();
-    this.typesService.list();
-    this.involvedsService.list();
-    this.plannersService.list();
   }
 
   form: FormGroup;
   selectedIndex = 0;
-  minDate = new FormControl(new Date());
+  minDate = new Date();
   id: string;
   subsModal: Subscription;
   subsForm: Subscription;
@@ -42,27 +39,43 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   planner$: Observable<Planner>;
 
   ngOnInit() {
+    console.log('estou no bottom sheet');
     console.log(this.data);
+    console.log(this.data.type);
     if (this.data != null) {
-      this.edit = false;
       this.form.patchValue(this.data);
-    } else {
       this.edit = true;
+    } else {
+      this.edit = false;
     }
   }
 
   ngOnDestroy() {
-    this.subsModal.unsubscribe();
+    if (this.subsModal) {
+      this.subsModal.unsubscribe();
+    }
   }
 
   onSubmit() {
     console.log(this.form.value);
-
-    this.subsForm = this.plannersService.createPlanner(this.form.value)
-    .subscribe(res => {
+    if (this.data !== null) {
+      this.subsForm = this.plannersService.updatePlanner(this.data.id, this.form.value)
+      .subscribe(res => {
+        this.plannersService.openSnackBar('Plano editado com sucesso!', 'Oba!');
+        this.plannersService.list();
+        this.close();
+      },
+      error => console.error(error));
+    } else {
+      this.subsForm = this.plannersService.createPlanner(this.form.value)
+      .subscribe(res => {
       this.plannersService.openSnackBar('Plano criado com sucesso!', 'Oba!');
+      this.plannersService.list();
+      this.close();
     },
     error => console.error(error));
+    }
+
   }
 
   openModal(str: string) {
@@ -90,7 +103,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
     this.form = this.fBuilder.group({
       id: [null],
       name: [null],
-      types: [null],
+      type: [null],
       charge: [null],
       start: [null],
       end: [null],
@@ -116,6 +129,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   }
 
   close() {
+    this.router.navigate(['']);
     this.bottomSheetRef.dismiss(this.data);
   }
 

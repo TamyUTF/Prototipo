@@ -3,10 +3,10 @@
     {
       "id": 1,
       "name": "Plano 1",
-      "type": "Tipo 1",
+      "type": null,
       "charge": "Responsável 1",
-      "start": "24/03/2019",
-      "end": "24/05/2019",
+      "start": "2019-03-28T03:00:00.000Z",
+      "end": "2019-03-31T03:00:00.000Z",
       "belongsTo": "Plano 2",
       "details": {
         "description": "Plano 1 referente aos planos para tomada de decisões.",
@@ -21,34 +21,36 @@
     {
       "id": 2,
       "name": "Plano 2",
-      "types": "Tipo 3",
+      "type": "Tipo 2",
       "charge": "Tamyres ",
-      "start": null,
-      "end": null,
+      "start": "2019-03-27T12:32:28.590Z",
+      "end": "2019-03-31T03:00:00.000Z",
       "belongsTo": null,
       "details": {
-        "description": [
+        "description": "asdasdsadasdasd",
+        "involveds": [
           "Envolvido 2",
           "Envolvido 3"
         ],
-        "involveds": null,
-        "price": null
+        "price": "600.00"
       }
     },
     {
       "id": 3,
       "name": "Plano 3",
-      "types": "Tipo 3",
-      "charge": "Fulaninho",
-      "start": null,
-      "end": "2019-03-27T03:00:00.000Z",
-      "belongsTo": "Plano 2",
+      "type": "Tipo 3",
+      "charge": "Joazinho",
+      "start": "2019-03-27T13:20:38.622Z",
+      "end": "2019-04-10T03:00:00.000Z",
+      "belongsTo": "none",
       "details": {
-        "description": [
+        "description": "sdfafsdfsadf",
+        "involveds": [
+          "Envolvido 1",
+          "Envolvido 2",
           "Envolvido 3"
         ],
-        "involveds": null,
-        "price": null
+        "price": "700.00"
       }
     }
   ],

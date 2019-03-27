@@ -9,8 +9,13 @@
     align-items: center;
 }
 
+.mat-list-base {
+    padding: 0px;
+}
+
 .container {
     height: 100%;
+    background-color: rgb(221, 221, 221);
     flex-direction: column;
     box-sizing: border-box;
     display: flex;
