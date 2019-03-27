@@ -12,11 +12,13 @@ import { PlannerService } from './planos/shared/planner.service';
 import { AppRoutingModule } from './app.routing.module';
 import { InvolvedsService } from './planos/shared/involveds.service';
 import { TypesService } from './planos/shared/types.service';
+import { ModalStatusComponent } from './planos/shared/modal/modal-status/modal-status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalFormComponent
+    ModalFormComponent,
+    ModalStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,8 @@ import { TypesService } from './planos/shared/types.service';
   ],
   providers: [PlannerService, TypesService, InvolvedsService],
   bootstrap: [AppComponent],
-  entryComponents: [ModalFormComponent]
+  entryComponents: [
+    ModalFormComponent,
+    ModalStatusComponent]
 })
 export class AppModule { }

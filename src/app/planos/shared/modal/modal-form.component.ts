@@ -23,11 +23,10 @@ export class ModalFormComponent implements OnInit, OnDestroy {
   subs: Subscription;
   type: boolean;
 
-
   ngOnInit() {
     if (this.data.type === 'type') {
       this.type = true;
-    } else {
+    } else if (this.data.type === 'involved') {
       this.type = false;
     }
   }
@@ -45,7 +44,7 @@ export class ModalFormComponent implements OnInit, OnDestroy {
           this.confirm();
         },
         error => console.error(error));
-      } else {
+      } else if (this.data.type === 'involved') {
         this.subs = this.involvedsService.createInvolved(this.form.value).subscribe(res => {
           this.confirm();
         },

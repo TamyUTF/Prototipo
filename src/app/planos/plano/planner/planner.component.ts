@@ -4,8 +4,9 @@ import {MatDialog, MatDialogConfig, MatBottomSheet, MatBottomSheetConfig} from '
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
-import { ModalFormComponent } from './../../shared/modal/modal-form.component';
+import { ModalStatusComponent } from './../../shared/modal/modal-status/modal-status.component';
 import { PlannerService } from './../../shared/planner.service';
 import { BottomSheetComponent } from './../../shared/bottom-sheet/bottom-sheet.component';
 import { InvolvedsService } from './../../shared/involveds.service';
@@ -26,12 +27,17 @@ export class PlannerComponent implements OnInit, OnDestroy {
               private involvedsService: InvolvedsService) {
                 this.typesService.list();
                 this.involvedsService.list();
-                this.plannerService.list();
+                this.plannerService.getAll();
                }
   subs: Subscription;
   deleteSubs: Subscription;
   ngOnInit() {
 
+  }
+
+   drop(event: CdkDragDrop<any[]>) {
+    console.log(event);
+    moveItemInArray(this.plannerService.planners, event.previousIndex, event.currentIndex);
   }
 
   ngOnDestroy() {
@@ -44,6 +50,19 @@ export class PlannerComponent implements OnInit, OnDestroy {
   edit(planner) {
     console.log(planner);
     this.openBottomSheet(planner);
+  }
+
+  changeStatus(plannerData: any, type: string) {
+    const matDialogConfig = new MatDialogConfig();
+    let dialogRef;
+    matDialogConfig.autoFocus = true;
+    matDialogConfig.width = '350px';
+    matDialogConfig.height = '250px';
+    matDialogConfig.data = {
+      status: type,
+      planner: plannerData
+    };
+    this.modal.open(ModalStatusComponent, matDialogConfig);
   }
 
   view(planner) {

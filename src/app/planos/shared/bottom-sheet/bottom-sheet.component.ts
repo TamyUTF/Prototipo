@@ -82,8 +82,8 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.direction = 'ltr';
-    dialogConfig.width = '250px';
-    dialogConfig.height = '280px';
+    dialogConfig.width = '350px';
+    dialogConfig.height = '250px';
     dialogConfig.data = {
       type: str
     };

@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { map } from 'rxjs/operators';
 
@@ -14,32 +14,19 @@ export class PlannerService implements OnDestroy {
     constructor(private http: HttpClient,
                 private snackbar: MatSnackBar) { }
     readonly apiUrl = `${environment.API}planners`;
-    planners$: Observable<Planner[]>;
-    subPlanners$: Observable<Planner[]>;
-    mainPlanners$: Observable<Planner[]>;
+    subs: Subscription;
+    planners$: Observable<any[]>;
+    public planners: any[];
 
     list() {
         this.planners$ = this.http.get<any[]>(this.apiUrl);
     }
 
-    listMainPlanners() {
-        this.mainPlanners$ = this.planners$.pipe(
-            map(planner => planner.filter(
-                plannerMain => plannerMain.belongsTo === null
-            ))
-        );
-    }
-
-    listSubPlanners() {
-        this.subPlanners$ = this.planners$.pipe(
-            map(planner => planner.filter(
-                plannerSub => plannerSub.belongsTo !== null
-            ))
-        );
-    }
-
     getAll() {
-        return this.http.get<Planner[]>(this.apiUrl);
+        this.subs = this.http.get<Planner[]>(this.apiUrl)
+        .subscribe(planner => {this.planners = planner;
+                               console.log(planner);
+                            });
     }
 
     getPlanner(id: string) {
@@ -59,7 +46,7 @@ export class PlannerService implements OnDestroy {
     }
 
     ngOnDestroy() {
-
+        this.subs.unsubscribe();
     }
 
     openSnackBar(msg: string, action: string) {

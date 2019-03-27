@@ -1,0 +1,56 @@
+<mat-dialog-content class="container">
+<mat-toolbar>
+  <h2 *ngIf = "startPlanner">Iniciar Plano</h2>
+  <h2 *ngIf = "!startPlanner">Concluir Plano</h2>
+</mat-toolbar>
+
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field *ngIf = "startPlanner">
+      <input  matInput 
+              placeholder= "Data de início"
+              required
+              [min]='todayDate'
+              floatLabel= "always"
+              [matDatepicker] ="pickerStart"
+              formControlName = "start"/>
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field *ngIf = "startPlanner">
+      <input  matInput 
+              placeholder= "Data de conclusão"
+              floatLabel= "always"
+              [min]="form.get('start').value"
+              [matDatepicker] ="pickerEnd"
+              formControlName = "end"/>
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field *ngIf = "!startPlanner">
+        <input  matInput 
+              placeholder= "Data de início"
+              floatLabel= "always"
+              [matDatepicker] ="pickerStart"
+              formControlName = "start"/>
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field *ngIf = "!startPlanner">
+          <input  matInput 
+                placeholder= "Data de Conclusão"
+                floatLabel= "always"
+                [matDatepicker] ="pickerEnd"
+                [min] = "form.get('start').value"
+                [max] = 'todayDate'
+                formControlName = "end"/>
+          <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+          <mat-datepicker #pickerEnd></mat-datepicker>
+        </mat-form-field>
+      <div class="modal-buttons">
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
+        <button mat-raised-button type="submit">Confirmar</button>
+      </div>
+    </form>
+  </mat-dialog-content>

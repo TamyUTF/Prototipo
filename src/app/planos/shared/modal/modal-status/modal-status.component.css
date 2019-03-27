@@ -1,0 +1,29 @@
+.mat-toolbar {
+
+    background-color: rgba(221, 221, 221, 0.651);
+    border-bottom: 5px solid rgb(61, 150, 223);
+}
+
+.mat-toolbar h2 {
+    font-weight: bold;
+    padding: 20px;
+}
+
+.container {
+    overflow: hidden;
+}
+
+form {
+    margin: 10px;
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: stretch space-evenly;
+    align-items: stretch;
+    max-width: 100%;
+}
+
+.modal-buttons {
+    display: flex;
+}

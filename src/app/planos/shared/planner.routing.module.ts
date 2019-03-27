@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { PlannerComponent } from './../plano/planner/planner.component';
 import { PlannerInfoComponent } from '../plano/plano-info/planner-info.component';
+
 const appRoutes = [
     { path: '', component: PlannerComponent, children: [
     { path: 'planner/:id/edit', component: ModalFormComponent},
@@ -13,7 +14,8 @@ const appRoutes = [
 
 @NgModule ({
     imports: [ RouterModule.forChild(appRoutes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    declarations: []
   })
 
 export class PlannerRoutingModule {}

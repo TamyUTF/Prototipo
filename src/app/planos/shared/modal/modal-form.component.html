@@ -1,7 +1,7 @@
 <mat-toolbar>
-    <h2 *ngIf = "type">Cadastrar Tipo</h2>
-    <h2 *ngIf = "!type">Cadastrar Pessoas</h2>
-  </mat-toolbar>
+  <h2 *ngIf = "type">Cadastrar Tipo</h2>
+  <h2 *ngIf = "!type">Cadastrar Pessoas</h2>
+</mat-toolbar>
 <mat-dialog-content class="container">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field *ngIf = "type">
