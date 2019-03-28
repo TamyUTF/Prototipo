@@ -32,6 +32,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
   subs: Subscription;
   deleteSubs: Subscription;
   subPlanners: false;
+  panelOpen: false;
   ngOnInit() {
 
   }

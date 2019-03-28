@@ -4,8 +4,24 @@
     }
 }
 
-.planner-list {
-    background-color: #fff;
+
+.mat-menu.content .mat-fab .mat-accent {
+    margin: 5px 0px;
+}
+
+.planner-expansion {
+    display:flex;
+    padding: 5px 0px;
+    margin: 0px 5px;
+}
+
+.planner-expansion .menu {
+    z-index: 10;
+}
+
+.planner-expansion .mat-expansion-panel{
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card-title { 
@@ -20,12 +36,6 @@
 
 .mat-list-base {
     display: contents;
-}
-
-.subPlanner-list .mat-list-item {
-    margin-left: 10px;
-    padding-left: 40px;
-    box-sizing: border-box;
 }
 
 .card-title h2 {
@@ -45,16 +55,41 @@
 }
 
 .planner-list {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: block;
+    place-content: center;
+    align-items: center;
+    background-color: #fff;
     width: 100%;
     box-shadow: 2px 2px 3px rgb(0, 0, 0, .2);
     margin-bottom: 10px;
 }
 
+.mat-expansion-panel-header {
+    background-color: #cfcfcf73;
+}
+
 .planner-item {
     margin: 0px 10px;
 }
-.mat-list-item mat-divider {
-    width: 98%;
+
+.subplanner-item {
+    display: flex;
+    place-content: center space-around;
+    align-items: center;
+    border-bottom: 1px solid #cacaca;
+}
+
+.subplanner-item h4{
+    font-weight: bold;
+    margin-left: 20px;
+    width: 100%;
+    font-size: 11pt;
+}
+
+.subplanner-item .menu {
+    margin-right: 8px;
 }
 
 .planner-item h4 {

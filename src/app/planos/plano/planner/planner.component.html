@@ -1,13 +1,141 @@
 <mat-card class="card-title">
+    <button class="filter" mat-fab [matMenuTriggerFor]="filter">
+      <mat-icon >search</mat-icon>
+    </button>
+    <mat-menu class="menu-filter" #filter="matMenu">
+    <button mat-fab>
+      <mat-icon>check</mat-icon>
+      <span>Concluídos</span>
+    </button>
+    <button mat-fab>
+      <mat-icon>check</mat-icon>
+      <span>Cancelados</span>
+    </button>
+    <button mat-fab>
+      <mat-icon>check</mat-icon>
+      <span>Em aberto</span>
+    </button>
+  </mat-menu>
     <h2>Meus planos</h2>
     <button mat-fab (click)="create()">
       <mat-icon >add</mat-icon>
     </button>
+
   </mat-card>
 
   <div class = "planner-list" *ngIf = "plannerService.planners as planners">
+    <mat-accordion>
+      <div class = "planner-expansion" *ngFor = "let planner of planners" >
+        <mat-expansion-panel *ngIf = "planner.belongsTo === null || planner.belongsTo === 'none'">
+        <mat-expansion-panel-header>
+            <div class="menu">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="edit(planner)">
+                      <mat-icon>edit</mat-icon>
+                      <span>Editar</span>
+                    </button>
+                    <button mat-menu-item (click)="add(planner)">
+                        <mat-icon>add</mat-icon>
+                        <span>Novo plano</span>
+                      </button>
+                    <button mat-menu-item [matMenuTriggerFor]="status">
+                      <mat-icon>shutter_speed</mat-icon>
+                      <span>Mudar status</span>
+                    </button>
+                    <button mat-menu-item (click)='delete(planner)'>
+                      <mat-icon>delete</mat-icon>
+                      <span>Remover</span>
+                    </button>
+                </mat-menu> 
+                <mat-menu #status ="matMenu">
+                  <button mat-menu-item (click)="changeStatus(planner, 'start')">
+                    <mat-icon>play_arrow</mat-icon>
+                    <span>Iniciar</span>
+                  </button>
+                  <button mat-menu-item (click)="changeStatus(planner, 'end')">
+                    <mat-icon>check</mat-icon>
+                    <span>Concluir</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>pause</mat-icon>
+                    <span>Suspender</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>block</mat-icon>
+                    <span>Cancelar</span>
+                  </button>
+                </mat-menu>
+            </div>
+            <mat-panel-title>
+              <h4>{{planner.name}}</h4>
+            </mat-panel-title>
+            <mat-panel-description>
+                {{planner.start | date: 'dd/MM/yyyy'}}
+                {{planner.end | date: 'dd/MM/yyyy'}}
+                <p>Status: {{planner.status}}</p>
+            </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div *ngFor = "let subPlanner of planners">
+        <div *ngIf = "subPlanner.belongsTo === planner.name">
+            <div class="subplanner-item">
+              <h4>{{subPlanner.name}}</h4>
+              <div class="menu">
+                  <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="edit(subPlanner)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Editar</span>
+                      </button>
+                      <button mat-menu-item [matMenuTriggerFor]="status">
+                        <mat-icon>shutter_speed</mat-icon>
+                        <span>Mudar status</span>
+                      </button>
+                      <button mat-menu-item (click)='delete(subPlanner)'>
+                        <mat-icon>delete</mat-icon>
+                        <span>Remover</span>
+                      </button>
+                  </mat-menu> 
+                  <mat-menu #status ="matMenu">
+                    <button mat-menu-item (click)="changeStatus(subPlanner, 'start')">
+                      <mat-icon>play_arrow</mat-icon>
+                      <span>Iniciar</span>
+                    </button>
+                    <button mat-menu-item (click)="changeStatus(subPlanner, 'end')">
+                      <mat-icon>check</mat-icon>
+                      <span>Concluir</span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>pause</mat-icon>
+                      <span>Suspender</span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>block</mat-icon>
+                      <span>Cancelar</span>
+                    </button>
+                  </mat-menu>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+        </div>
+      </div>
+    </mat-expansion-panel>       
+    </div>
+    </mat-accordion>
+  </div>
+
+
+
+
+
+
+
     
-    <mat-list role="list" *ngFor = "let planner of planners">
+    <!--mat-list role="list" *ngFor = "let planner of planners">
       <mat-list-item  class = "planner-item" *ngIf = "planner.belongsTo === null || planner.belongsTo === 'none'">        
         <h4 mat-line>{{planner.name}}</h4>
         <h4 mat-line>{{planner.status}}</h4>
@@ -17,7 +145,7 @@
         <p mat-line > {{planner.start | date: 'dd/MM/yyyy'}}
                       {{planner.end | date: 'dd/MM/yyyy'}}
         </p>
-        <!--MENU-->
+        <MENU>
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
@@ -56,7 +184,7 @@
       </mat-list-item> 
       <mat-divider></mat-divider>
 
-      <!--SUBPLANOS-->          
+      <UBPLANOS>          
       <mat-list class="subPlanner-list" *ngFor = "let subPlanner of planners">
         <mat-list-item  *ngIf = "subPlanner.belongsTo === planner.name">
             <h4 mat-line>{{subPlanner.name}}</h4>
@@ -101,8 +229,8 @@
           <mat-divider></mat-divider>
         </mat-list-item>
       </mat-list> 
-    </mat-list>
-  </div>
+    </mat-list-->
+
   
 
     

@@ -22,3 +22,17 @@ body {
     padding: 0px !important;
     padding-bottom: 800px !important;
 }
+
+.mat-expansion-panel-header-description {
+    align-items: center !important;
+}
+
+.mat-menu-panel {
+    display: contents;
+}
+
+.mat-menu.content {
+    flex-direction: column !important;
+    display: flex !important;
+}
+
