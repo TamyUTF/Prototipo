@@ -31,7 +31,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   selectedIndex = 0;
-  minDate = new Date();
+  minDate = new Date('0-0-0');
   id: string;
   subsModal: Subscription;
   subsForm: Subscription;
@@ -41,7 +41,6 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log('estou no bottom sheet');
     console.log(this.data);
-    console.log(this.data.type);
     if (this.data != null) {
       this.form.patchValue(this.data);
       this.edit = true;
@@ -62,7 +61,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
       this.subsForm = this.plannersService.updatePlanner(this.data.id, this.form.value)
       .subscribe(res => {
         this.plannersService.openSnackBar('Plano editado com sucesso!', 'Oba!');
-        this.plannersService.list();
+        this.plannersService.getAll();
         this.close();
       },
       error => console.error(error));
@@ -70,7 +69,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
       this.subsForm = this.plannersService.createPlanner(this.form.value)
       .subscribe(res => {
       this.plannersService.openSnackBar('Plano criado com sucesso!', 'Oba!');
-      this.plannersService.list();
+      this.plannersService.getAll();
       this.close();
     },
     error => console.error(error));
@@ -107,6 +106,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
       charge: [null],
       start: [null],
       end: [null],
+      status: [null],
       belongsTo: [null],
         details: this.fBuilder.group( {
         description: [null],

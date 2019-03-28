@@ -12,6 +12,12 @@
     padding: 20px;
 }
 
+.modal-buttons {
+    display: flex;
+    place-content: stretch space-evenly;
+    align-items: stretch;
+}
+
 form {
     margin: 10px;
     height: 100%;

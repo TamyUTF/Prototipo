@@ -1,3 +1,9 @@
+@media screen and (max-width: 720px) {
+    .planner-list {
+        width: 80%;
+    }
+}
+
 .planner-list {
     background-color: #fff;
 }

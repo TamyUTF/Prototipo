@@ -9,7 +9,6 @@
     <mat-form-field *ngIf = "startPlanner">
       <input  matInput 
               placeholder= "Data de início"
-              required
               [min]='todayDate'
               floatLabel= "always"
               [matDatepicker] ="pickerStart"

@@ -21,6 +21,7 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
   subs: Subscription;
   startPlanner: boolean;
   todayDate = new Date();
+  status: string;
 
   createForm() {
     this.form = this.fBuilder.group({
@@ -30,6 +31,7 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
       charge: [this.data.planner.charge],
       start: [this.data.planner.start],
       end: [this.data.planner.end],
+      status: [this.data.planner.status],
       belongsTo: [this.data.planner.belongsTo],
         details: this.fBuilder.group( {
         description: [this.data.planner.details.description],
@@ -56,11 +58,11 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.data.planner.name);
-    console.log(this.data.planner);
     if (this.data.status === 'start') {
+      this.data.planner.status = 'Aberto';
       this.startPlanner = true;
     } else if (this.data.status === 'end') {
+      this.data.planner.status = 'Concluído';
       this.startPlanner = false;
     }
   }

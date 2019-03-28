@@ -16,7 +16,7 @@ export class PlannerService implements OnDestroy {
     readonly apiUrl = `${environment.API}planners`;
     subs: Subscription;
     planners$: Observable<any[]>;
-    public planners: any[];
+    public planners: Planner[];
 
     list() {
         this.planners$ = this.http.get<any[]>(this.apiUrl);

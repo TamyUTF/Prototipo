@@ -1,5 +1,4 @@
 .mat-toolbar {
-
     background-color: rgba(221, 221, 221, 0.651);
     border-bottom: 5px solid rgb(61, 150, 223);
 }
@@ -22,6 +21,7 @@ form {
     place-content: stretch space-evenly;
     align-items: stretch;
     max-width: 100%;
+
 }
 
 .modal-buttons {

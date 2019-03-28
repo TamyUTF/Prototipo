@@ -1,12 +1,14 @@
 <mat-toolbar>
   <h2 *ngIf = "!edit">Cadastrar plano</h2>
   <h2 *ngIf = "edit">Editar plano</h2>
+  <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+  </button>
 </mat-toolbar>
 <mat-dialog-content class="container">
 <mat-tab-group [selectedIndex]="selectedIndex">
-  <mat-tab label="Geral"
-            >  
-    <form [formGroup]="form">
+  <mat-tab label="Geral">  
+    <form class="form" [formGroup]="form">
       <mat-form-field>
         <input  hideRequiredMarker = "true"
                 matInput max-length="200" 
@@ -63,17 +65,15 @@
                     formControlName = "belongsTo">
           <mat-option value="none">Nenhum
           </mat-option>          
-          <mat-option *ngFor = "let planner of plannersService.planners$ | async" [value]="planner.name">
+          <mat-option *ngFor = "let planner of plannersService.planners" [value]="planner.name">
             {{planner.name}}
           </mat-option>
         </mat-select>       
       </mat-form-field>
-      <button mat-raised-button
-              (click)="nextIndex()" >Próximo</button>
     </form>
   </mat-tab>
   <mat-tab label="Detalhes">
-    <form [formGroup] = "form" (ngSubmit)="onSubmit()">
+    <form class="form" [formGroup] = "form" (ngSubmit)="onSubmit()">
       <div formGroupName = details>
         <mat-form-field>
         <textarea matInput placeholder="Descrição"
@@ -102,7 +102,6 @@
                         formControlName = "price"/>
       </mat-form-field>
       </div>
-      <button mat-raised-button (click)="backIndex()">Voltar</button>
       <button mat-raised-button type="submit">Enviar</button>
     </form>
   </mat-tab>  

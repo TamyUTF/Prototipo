@@ -31,6 +31,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
                }
   subs: Subscription;
   deleteSubs: Subscription;
+  subPlanners: false;
   ngOnInit() {
 
   }
@@ -67,7 +68,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
 
   view(planner) {
     this.router.navigate(['planner', planner.id]);
-    this.openModalInfo();
+    //  this.openModalInfo();
   }
 
   create() {
@@ -79,7 +80,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
     this.deleteSubs = this.plannerService.deletePlanner(planner.id).subscribe(
       res => {
         this.plannerService.openSnackBar('Plano deletado com sucesso.', 'Ok!');
-        this.plannerService.list();
+        this.plannerService.getAll();
       },
       error => console.error(error)
     );
@@ -88,7 +89,6 @@ export class PlannerComponent implements OnInit, OnDestroy {
   openBottomSheet(data?: any) {
     const matConfig = new MatBottomSheetConfig();
     let bottomSheetRef: any;
-    matConfig.autoFocus = true;
 
     if ((data !== undefined ) && ( data !== null)) {
       matConfig.data = {
@@ -98,6 +98,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
         charge: data.charge,
         start: data.start,
         end: data.end,
+        status: data.status,
         belongsTo: data.belongsTo,
         details: {
           description: data.details.description,

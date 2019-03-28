@@ -6,6 +6,7 @@ export interface Planner {
     start: Date;
     end: Date;
     belongsTo: string;
+    status: string;
     details: {
       description: string;
       involveds: [string],
