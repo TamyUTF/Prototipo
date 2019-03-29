@@ -15,7 +15,6 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
               private dialogRef: MatDialogRef<ModalStatusComponent>,
               @Inject(MAT_DIALOG_DATA) public data,
               private plannersService: PlannerService) {
-    this.createForm();
                }
   form: FormGroup;
   subs: Subscription;
@@ -45,13 +44,27 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
+  setStatus() {
+    this.data.planner.start = this.form.get('start').value;
+    this.data.planner.end = this.form.get('end').value;
+
+    if (this.data.status === 'start') {
+      this.data.planner.status = 'Aberto';
+    } else {
+      this.data.planner.status = 'Concluído';
+    }
+  }
+
   onSubmit() {
+    this.setStatus();
+    console.log(this.form.value);
+    console.log(this.data.planner);
     if (this.form.valid) {
-      this.subs = this.plannersService.updatePlanner(this.data.planner.id, this.form.value)
+      this.subs = this.plannersService.updatePlanner(this.data.planner.id, this.data.planner)
       .subscribe(res => {
         this.plannersService.openSnackBar('Status alterado com sucesso', 'Ok!');
         this.dialogRef.close();
-        this.plannersService.list();
+        this.plannersService.getAll();
       },
       error => console.error(error));
     }
@@ -59,12 +72,12 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (this.data.status === 'start') {
-      this.data.planner.status = 'Aberto';
+      
       this.startPlanner = true;
     } else if (this.data.status === 'end') {
-      this.data.planner.status = 'Concluído';
       this.startPlanner = false;
     }
+    this.createForm();
   }
 
   ngOnDestroy() {

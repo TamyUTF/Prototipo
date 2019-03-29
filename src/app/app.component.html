@@ -1,4 +1,5 @@
-<mat-toolbar>
+<div class = "full-sidenav">
+  <mat-toolbar>
     <button  mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -14,20 +15,21 @@
     </div>
   </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav  #sidenav 
-                mode="side" 
-                [opened]="opened"
-                fixedTopGap = '65'
-                fixedTopGap= '0'>
-    <mat-list>
-      <mat-list-item>Visão Geral</mat-list-item>
-      <mat-list-item>Planos</mat-list-item>
-    </mat-list>
-  </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="container">
-        <app-planner></app-planner>
-      </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-sidenav-container>
+    <mat-sidenav  #sidenav 
+                  mode="side" 
+                  [opened]="opened"
+                  fixedTopGap = '65'
+                  fixedTopGap= '0'>
+      <mat-list class="menu-links">
+        <mat-list-item [routerLink]="(['dashboard'])">Visão Geral</mat-list-item>
+        <mat-list-item [routerLink]="([''])">Planos</mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

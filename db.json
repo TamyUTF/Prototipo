@@ -5,8 +5,9 @@
       "name": "Plano 1",
       "type": null,
       "charge": "Responsável 1",
-      "start": "2019-03-27T03:00:00.000Z",
-      "end": "2019-04-02T03:00:00.000Z",
+      "start": "2019-03-01T03:00:00.000Z",
+      "end": "2019-03-29T03:00:00.000Z",
+      "status": "Concluído",
       "belongsTo": "Plano 2",
       "details": {
         "description": "Plano 1 referente aos planos para tomada de decisões.",
@@ -92,8 +93,9 @@
       "name": "Plano 7",
       "type": "Tipo 4",
       "charge": "Bla",
-      "start": null,
-      "end": "2019-03-31T03:00:00.000Z",
+      "start": "2019-03-29T03:00:00.000Z",
+      "end": "2019-03-29T03:00:00.000Z",
+      "status": "Suspendido",
       "belongsTo": "Plano 6",
       "details": {
         "description": "asdasdasds",
@@ -103,6 +105,44 @@
           "Envolvido 3"
         ],
         "price": "800.00"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Plano 10",
+      "type": "Tipo 3",
+      "charge": "Fulaninho",
+      "start": null,
+      "end": "2019-05-31T03:00:00.000Z",
+      "status": null,
+      "belongsTo": "none",
+      "details": {
+        "description": "asdasdasdasd",
+        "involveds": [
+          "Envolvido 1",
+          "Envolvido 2",
+          "Envolvido 3"
+        ],
+        "price": "800.00"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Plano 11",
+      "type": "tipo 9",
+      "charge": "Jamalaaaaaaa",
+      "start": null,
+      "end": null,
+      "status": "Suspendido",
+      "belongsTo": "Plano 10",
+      "details": {
+        "description": "sdfasdfsf",
+        "involveds": [
+          "Envolvido 1",
+          "Envolvido 2",
+          "Envolvido 5"
+        ],
+        "price": "500.00"
       }
     }
   ],
@@ -122,6 +162,10 @@
     {
       "id": 4,
       "type": "Tipo 4"
+    },
+    {
+      "id": 5,
+      "type": "tipo 9"
     }
   ],
   "involveds": [
@@ -136,6 +180,10 @@
     {
       "id": 3,
       "involved": "Envolvido 3"
+    },
+    {
+      "id": 4,
+      "involved": "Envolvido 5"
     }
   ]
 }

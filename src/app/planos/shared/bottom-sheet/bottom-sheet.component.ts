@@ -9,6 +9,7 @@ import { Subscription, Observable } from 'rxjs';
 import { PlannerService } from '../planner.service';
 import { Planner } from '../planner.model';
 import { ModalFormComponent } from '../modal/modal-form.component';
+import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
 @Component({
   selector: 'app-bottom-sheet',
@@ -32,6 +33,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   form: FormGroup;
   selectedIndex = 0;
   minDate = new Date('0-0-0');
+  todayDate = new Date();
   id: string;
   subsModal: Subscription;
   subsForm: Subscription;
@@ -55,8 +57,23 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
     }
   }
 
+  setStatus() {
+    if (this.form.get('start').value == null && this.form.get('end').value) {
+      this.form.setValue({status: 'Aguardando início'});
+    } else if (this.form.get('start').value == null && this.form.get('end').value !== null) {
+      this.form.setValue({status: 'Aberto'});
+     } else if (this.form.get('start').value !== null && this.form.get('end').value !== null) {
+      if (this.form.get('end').value < this.todayDate) {
+        this.form.setValue({status: 'Aberto'});
+      } else {
+        this.form.setValue({status: 'Atrasado'});
+      }
+    }
+  }
+
   onSubmit() {
     console.log(this.form.value);
+    this.setStatus();
     if (this.data !== null) {
       this.subsForm = this.plannersService.updatePlanner(this.data.id, this.form.value)
       .subscribe(res => {

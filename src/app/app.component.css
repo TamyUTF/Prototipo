@@ -1,3 +1,7 @@
+.full-sidenav {
+    height: 100%;
+}
+
 .mat-toolbar {
     background-color: rgb(20, 93, 167);
     color: #fff;
@@ -43,3 +47,6 @@
     color: rgba(221, 221, 221, 0.801);
 }
 
+.menu-links .mat-list-item {
+    cursor: pointer;
+}

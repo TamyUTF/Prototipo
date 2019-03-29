@@ -1,0 +1,27 @@
+.card-title { 
+    width: 900px;
+    height: 70px;
+    margin: 10px 0px;
+    box-shadow: 2px 2px 3px rgb(0, 0, 0, .2);
+    border-left: 5px solid rgb(61, 150, 223);
+    display: flex;
+    align-items: center;
+}
+
+.card-title h2 {
+    margin: 20px 0px 20px 30px;
+    color: #575757;
+    width: 100%;
+}
+
+.dashboard-list .mat-card {
+    margin: 10px 0px;
+}
+
+.mat-card-title a {
+    cursor: default;
+}
+
+.mat-card-title .mat-fab {
+    box-shadow: none;
+}

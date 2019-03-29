@@ -2,7 +2,7 @@ import { ModalFormComponent } from './modal/modal-form.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { PlannerComponent } from './../plano/planner/planner.component';
+import { PlannerComponent } from './../plano/planner-list/planner.component';
 import { PlannerInfoComponent } from '../plano/plano-info/planner-info.component';
 
 const appRoutes = [

@@ -26,4 +26,10 @@ form {
 
 .modal-buttons {
     display: flex;
+    place-content: center;
+    align-items: center;
+}
+
+.modal-buttons button {
+    margin: 0px 5px;
 }

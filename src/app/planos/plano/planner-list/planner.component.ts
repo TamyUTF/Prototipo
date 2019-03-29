@@ -37,13 +37,15 @@ export class PlannerComponent implements OnInit, OnDestroy {
 
   }
 
-   drop(event: CdkDragDrop<any[]>) {
+  drop(event: CdkDragDrop<any[]>) {
     console.log(event);
     moveItemInArray(this.plannerService.planners, event.previousIndex, event.currentIndex);
   }
 
   ngOnDestroy() {
-    this.subs.unsubscribe();
+    if (this.subs) {
+      this.subs.unsubscribe();
+    }
     if (this.deleteSubs) {
       this.deleteSubs.unsubscribe();
     }
@@ -56,7 +58,6 @@ export class PlannerComponent implements OnInit, OnDestroy {
 
   changeStatus(plannerData: any, type: string) {
     const matDialogConfig = new MatDialogConfig();
-    let dialogRef;
     matDialogConfig.autoFocus = true;
     matDialogConfig.width = '350px';
     matDialogConfig.height = '250px';
@@ -67,13 +68,31 @@ export class PlannerComponent implements OnInit, OnDestroy {
     this.modal.open(ModalStatusComponent, matDialogConfig);
   }
 
+  pause(planner) {
+    planner.status = 'Suspendido';
+    this.plannerService.updatePlanner(planner.id, planner).subscribe(
+      res => {
+
+      },
+      error => console.error(error)
+    );
+  }
+
+  cancel(planner) {
+    planner.status = 'Cancelado';
+    this.plannerService.updatePlanner(planner.id, planner).subscribe(
+      res => {
+
+      },
+      error => console.error(error)
+    );
+  }
+
   view(planner) {
-    this.router.navigate(['planner', planner.id]);
     //  this.openModalInfo();
   }
 
   create() {
-    this.router.navigate(['new']);
     this.openBottomSheet();
   }
 
