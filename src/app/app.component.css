@@ -2,6 +2,10 @@
     height: 100%;
 }
 
+.mat-sidenav{
+    min-height: 100%;
+}
+
 .mat-toolbar {
     background-color: rgb(20, 93, 167);
     color: #fff;
@@ -15,10 +19,13 @@
 }
 
 .mat-toolbar h5 {
-  border-left: 5px solid #4fa7ff;
-  font-size: 15pt;
-  flex: auto;
-  height: 100%;
+    border-left: 5px solid #4fa7ff;
+    font-size: 15pt;
+    flex: auto;
+    height: 100%;
+    padding-top: 20px;
+    padding-left: 10px;
+    margin-left: 20px;
 }
 
 .mat-toolbar h2 {
@@ -30,7 +37,7 @@
 }
 
 .container {
-    height: 100%;
+    min-height: calc(100vh - 64px);
     background-color: rgb(221, 221, 221);
     flex-direction: column;
     box-sizing: border-box;
@@ -46,6 +53,11 @@
     align-items: center;
     margin: 0px 10px;
 }
+
+.user-nav img {
+    margin-left: 10px;
+}
+
 .user-info {
     display: block;
     line-height: 8px;

@@ -28,9 +28,16 @@
     padding: 0px 5px 5px 3px;
 }
 
+.charge-info {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .charge-info img {
   width: 30px;
   height: 30px;
+  margin-left: 16px;
 }
 
 .planner-list {
@@ -59,6 +66,7 @@
     margin:auto;
 }
 .subPlanner-info {
+    min-width: 50%;
     flex-direction: column;
     padding-left: 20px;
     line-height: 5px;
@@ -75,6 +83,7 @@
 
 .mat-expansion-panel-header-description {
   flex: unset;
+  margin: 0;
 }
 
 .subplanner-item {

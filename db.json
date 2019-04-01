@@ -144,47 +144,6 @@
         ],
         "price": "500.00"
       }
-    },
-    {
-      "id": 10,
-      "name": "Plano 15",
-      "type": "Tipo 4",
-      "charge": "William",
-      "start": null,
-      "end": null,
-      "status": null,
-      "belongsTo": "none",
-      "details": {
-        "description": "adsadsadsad",
-        "involveds": [
-          "Envolvido 1",
-          "Envolvido 2",
-          "Envolvido 3",
-          "Envolvido 5"
-        ],
-        "price": "500.00"
-      }
-    },
-    {
-      "name": "Plano 21 ",
-      "type": "Tipo 11",
-      "charge": "Tamyres",
-      "start": "2019-03-27T03:00:00.000Z",
-      "end": "2019-04-10T03:00:00.000Z",
-      "status": null,
-      "belongsTo": "none",
-      "details": {
-        "description": "sdfsfsdf",
-        "involveds": [
-          "Envolvido 1",
-          "Envolvido 2",
-          "Envolvido 3",
-          "Envolvido 5",
-          "Envolvido 10"
-        ],
-        "price": "800.00"
-      },
-      "id": 11
     }
   ],
   "types": [

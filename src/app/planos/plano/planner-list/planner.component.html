@@ -21,10 +21,8 @@
       <mat-icon >add</mat-icon>
     </button>
 </mat-card>
-<div *ngIf="filter; else noFilter">
-  teste
-</div>
-<div #noFilter class = "planner-list" *ngIf = "plannerService.planners as planners" >
+
+<div class = "planner-list" *ngIf = "plannerService.planners as planners" >
   <mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
     <div class = "planner-expansion" *ngFor = "let planner of planners" cdkDrag>
       <mat-expansion-panel *ngIf = "planner.belongsTo === null || planner.belongsTo === 'none'">
