@@ -67,8 +67,12 @@ export class PlannerComponent implements OnInit, OnDestroy {
     }
   }
 
-  filterCanceled() {
-    this.plannerService.planners.filter(planners => planners.status === 'Cancelado');
+  filterCanceled(status) {
+    this.router.navigate([`planner/${status}`]);
+    this.plannerService.planners = this.plannerService.planners.filter(planners => {
+      if ( planners.status === 'Cancelado') {
+        }
+    });
   }
 
   filterOnProgress() {

@@ -4,6 +4,8 @@
 
 .mat-sidenav{
     min-height: 100%;
+    overflow: hidden;
+    width: 200px;
 }
 
 .mat-toolbar {
@@ -37,13 +39,18 @@
 }
 
 .container {
+    background-color: #c8c8c879;;
     min-height: calc(100vh - 64px);
-    background-color: rgb(221, 221, 221);
+    height: 100%;
     flex-direction: column;
-    box-sizing: border-box;
     display: flex;
     place-content: center space-around;
     align-items: center;
+}
+
+.app-planner .ng-star-inserted {
+    position: absolute !important;
+    top: 0px !important;
 }
 
 .user-nav {
@@ -76,4 +83,13 @@
 
 .menu-links .mat-list-item {
     cursor: pointer;
+}
+
+.mat-list-item:hover {
+    background-color: rgba(221, 221, 221, 0.801);
+    transition: 0.2s;
+}
+
+.mat-drawer-inner-container {
+    overflow: hidden;
 }

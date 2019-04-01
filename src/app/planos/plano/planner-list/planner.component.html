@@ -1,119 +1,51 @@
-<mat-card class="card-title">
-    <button class="filter" mat-fab [matMenuTriggerFor]="filter">
-      <mat-icon >search</mat-icon>
-    </button>
-    <mat-menu class="menu-filter" #filter="matMenu">
-    <button mat-menu-item (click)="filterFinished()">
-      <mat-icon >check</mat-icon>
-      <span>Concluídos</span>
-    </button>
-    <button mat-menu-item (click)="filterCanceled()">
-      <mat-icon >block</mat-icon>
-      <span>Cancelados</span>
-    </button>
-    <button mat-menu-item (click)="filterOnProgress()">
-      <mat-icon >play_arrow</mat-icon>
-      <span>Em aberto</span>
-    </button>
-  </mat-menu>
-    <h2>Meus planos</h2>
-    <button mat-fab (click)="create()">
-      <mat-icon >add</mat-icon>
-    </button>
-</mat-card>
+<div class="planners">
+  <mat-card class="card-title">
+      <button class="filter" mat-fab [matMenuTriggerFor]="filter">
+        <mat-icon >search</mat-icon>
+      </button>
+      <mat-menu class="menu-filter" #filter="matMenu">
+        <button mat-menu-item (click)="getAll()">
+          <mat-icon >check</mat-icon>
+          <span>Todos os planos</span>
+        </button>
+      <button mat-menu-item (click)="filterFinished('Concluído')">
+        <mat-icon >check</mat-icon>
+        <span>Concluídos</span>
+      </button>
+      <button mat-menu-item (click)="filterCanceled('Cancelado')">
+        <mat-icon >block</mat-icon>
+        <span>Cancelados</span>
+      </button>
+      <button mat-menu-item (click)="filterOnProgress('Aberto')">
+        <mat-icon >play_arrow</mat-icon>
+        <span>Em aberto</span>
+      </button>
+    </mat-menu>
+      <h2>Meus planos</h2>
+      <button mat-fab (click)="create()">
+        <mat-icon >add</mat-icon>
+      </button>
+  </mat-card>
+
+  <ng-container *ngIf="!filter;else showFilter"></ng-container>
+  <ng-template #showFilter></ng-template>
 
 
-<div class = "planner-list" *ngIf = "plannerService.planners as planners" >
-  <mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
-    <div class = "planner-expansion" *ngFor = "let planner of planners" cdkDrag>
-      <mat-expansion-panel *ngIf = "planner.belongsTo === null || planner.belongsTo === 'none'">
-      <mat-expansion-panel-header >
-          <div class="menu">
-              <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item (click)="edit(planner)">
-                    <mat-icon>edit</mat-icon>
-                    <span>Editar</span>
-                  </button>
-                  <button mat-menu-item (click)="view(planner)">
-                    <mat-icon>remove_red_eye</mat-icon>
-                    <span>Visualizar</span>
-                  </button>
-                  <button mat-menu-item [matMenuTriggerFor]="status">
-                    <mat-icon>shutter_speed</mat-icon>
-                    <span>Mudar status</span>
-                  </button>
-                  <button mat-menu-item (click)='delete(planner)'>
-                    <mat-icon>delete</mat-icon>
-                    <span>Remover</span>
-                  </button>
-              </mat-menu>
-              <mat-menu #status ="matMenu">
-                <button mat-menu-item (click)="changeStatus(planner, 'start')">
-                  <mat-icon>play_arrow</mat-icon>
-                  <span>Iniciar</span>
-                </button>
-                <button mat-menu-item (click)="changeStatus(planner, 'end')">
-                  <mat-icon>check</mat-icon>
-                  <span>Concluir</span>
-                </button>
-                <button mat-menu-item (click)="pause(planner)">
-                  <mat-icon>pause</mat-icon>
-                  <span>Suspender</span>
-                </button>
-                <button mat-menu-item (click)="cancel(planner)">
-                  <mat-icon>block</mat-icon>
-                  <span>Cancelar</span>
-                </button>
-              </mat-menu>
-          </div>
-          <mat-panel-title>
-            <h4>{{planner.name}}</h4>
-          </mat-panel-title>
-          <mat-panel-description>
-            <div class="charge-info">
-              {{planner.charge}} <img src="../../../../assets/user.png"/>
-            </div>
-          </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div *ngFor = "let subPlanner of planners">
-      <div *ngIf = "subPlanner.belongsTo === planner.name">
-          <div class="subplanner-item" [ngClass]="{'planner2': subPlanner.status == 'Concluído',
-                                                    'planner3': subPlanner.status == 'Aberto',
-                                                    'planner1': subPlanner.status == 'Suspendido',
-                                                    'planner4': subPlanner.status == 'Cancelado'}">
-            <div class="subPlanner-info">
-              <h4>{{subPlanner.name}}</h4>
-              <ng-container *ngIf = "subPlanner.end == null && subPlanner.start == null">
-                <p>{{subPlanner.status}}</p>
-                <p mat-line>Sem prazo definido</p>
-              </ng-container>
-              <ng-container *ngIf = "subPlanner.start == null && subPlanner.end !== null">
-                <p mat-line>{{subPlanner.status}} {{subPlanner.end | date: 'dd/MM/yyyy'}}</p>
-              </ng-container>
-              <ng-container *ngIf = "subPlanner.start !== null && subPlanner.end == null">
-                  <p mat-line>{{subPlanner.status}}</p>
-                </ng-container>
-              <ng-container *ngIf = "subPlanner.start !== null && subPlanner.end !== null">
-                <p>{{subPlanner.status}}</p>
-                <p>De {{subPlanner.start | date: 'dd/MM/yyyy'}} até {{subPlanner.end | date: 'dd/MM/yyyy'}}</p>
-              </ng-container>
-            </div>
-            <div class="charge-info">
-              {{subPlanner.charge}} <img src="../../../../assets/user.png"/>
-            </div>
-            <div class="menu">
+    <div class = "planner-list" *ngIf = "plannerService.planners as planners" >
+      <mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
+        <div class = "planner-expansion" *ngFor = "let planner of planners" cdkDrag>
+          <mat-expansion-panel *ngIf = "planner.belongsTo === null || planner.belongsTo === 'none'">
+          <mat-expansion-panel-header >
+              <div class="menu">
                 <button mat-icon-button [matMenuTriggerFor]="menu">
                   <mat-icon>more_vert</mat-icon>
                 </button>
                   <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="edit(subPlanner)">
+                    <button mat-menu-item (click)="edit(planner)">
                       <mat-icon>edit</mat-icon>
                       <span>Editar</span>
                     </button>
-                    <button mat-menu-item (click)="view(subPlanner)">
+                    <button mat-menu-item (click)="view(planner)">
                       <mat-icon>remove_red_eye</mat-icon>
                       <span>Visualizar</span>
                     </button>
@@ -121,35 +53,112 @@
                       <mat-icon>shutter_speed</mat-icon>
                       <span>Mudar status</span>
                     </button>
-                    <button mat-menu-item (click)='delete(subPlanner)'>
+                    <button mat-menu-item (click)='delete(planner)'>
                       <mat-icon>delete</mat-icon>
                       <span>Remover</span>
                     </button>
                 </mat-menu>
                 <mat-menu #status ="matMenu">
-                  <button mat-menu-item (click)="changeStatus(subPlanner, 'start')">
+                  <button mat-menu-item (click)="changeStatus(planner, 'start')">
                     <mat-icon>play_arrow</mat-icon>
                     <span>Iniciar</span>
                   </button>
-                  <button mat-menu-item (click)="changeStatus(subPlanner, 'end')">
+                  <button mat-menu-item (click)="changeStatus(planner, 'end')">
                     <mat-icon>check</mat-icon>
                     <span>Concluir</span>
                   </button>
-                  <button mat-menu-item (click)="pause(subPlanner)">
+                  <button mat-menu-item (click)="pause(planner)">
                     <mat-icon>pause</mat-icon>
                     <span>Suspender</span>
                   </button>
-                  <button mat-menu-item (click)="cancel(subPlanner)">
+                  <button mat-menu-item (click)="cancel(planner)">
                     <mat-icon>block</mat-icon>
                     <span>Cancelar</span>
                   </button>
                 </mat-menu>
+              </div>
+              <mat-panel-title>
+                <h4>{{planner.name}}</h4>
+              </mat-panel-title>
+              <mat-panel-description>
+                <div class="charge-info">
+                  {{planner.charge}} <img src="../../../../assets/user.png"/>
+                </div>
+              </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngFor = "let subPlanner of planners">
+          <div *ngIf = "subPlanner.belongsTo === planner.name">
+              <div class="subplanner-item" [ngClass]="{'planner2': subPlanner.status == 'Concluído',
+                                                        'planner3': subPlanner.status == 'Aberto',
+                                                        'planner1': subPlanner.status == 'Suspendido',
+                                                        'planner4': subPlanner.status == 'Cancelado'}">
+                <div class="subPlanner-info">
+                  <h4>{{subPlanner.name}}</h4>
+                  <ng-container *ngIf = "subPlanner.end == null && subPlanner.start == null">
+                    <p>{{subPlanner.status}}</p>
+                    <p mat-line>Sem prazo definido</p>
+                  </ng-container>
+                  <ng-container *ngIf = "subPlanner.start == null && subPlanner.end !== null">
+                    <p mat-line>{{subPlanner.status}} {{subPlanner.end | date: 'dd/MM/yyyy'}}</p>
+                  </ng-container>
+                  <ng-container *ngIf = "subPlanner.start !== null && subPlanner.end == null">
+                      <p mat-line>{{subPlanner.status}}</p>
+                    </ng-container>
+                  <ng-container *ngIf = "subPlanner.start !== null && subPlanner.end !== null">
+                    <p>{{subPlanner.status}}</p>
+                    <p>De {{subPlanner.start | date: 'dd/MM/yyyy'}} até {{subPlanner.end | date: 'dd/MM/yyyy'}}</p>
+                  </ng-container>
+                </div>
+                <div class="charge-info">
+                  {{subPlanner.charge}} <img src="../../../../assets/user.png"/>
+                </div>
+                <div class="menu">
+                  <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="edit(subPlanner)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Editar</span>
+                      </button>
+                      <button mat-menu-item (click)="view(subPlanner)">
+                        <mat-icon>remove_red_eye</mat-icon>
+                        <span>Visualizar</span>
+                      </button>
+                      <button mat-menu-item [matMenuTriggerFor]="status">
+                        <mat-icon>shutter_speed</mat-icon>
+                        <span>Mudar status</span>
+                      </button>
+                      <button mat-menu-item (click)='delete(subPlanner)'>
+                        <mat-icon>delete</mat-icon>
+                        <span>Remover</span>
+                      </button>
+                    </mat-menu>
+                  <mat-menu #status ="matMenu">
+                    <button mat-menu-item (click)="changeStatus(subPlanner, 'start')">
+                      <mat-icon>play_arrow</mat-icon>
+                      <span>Iniciar</span>
+                    </button>
+                    <button mat-menu-item (click)="changeStatus(subPlanner, 'end')">
+                      <mat-icon>check</mat-icon>
+                      <span>Concluir</span>
+                    </button>
+                    <button mat-menu-item (click)="pause(subPlanner)">
+                      <mat-icon>pause</mat-icon>
+                      <span>Suspender</span>
+                    </button>
+                    <button mat-menu-item (click)="cancel(subPlanner)">
+                      <mat-icon>block</mat-icon>
+                      <span>Cancelar</span>
+                    </button>
+                  </mat-menu>
+                </div>
+              <mat-divider></mat-divider>
             </div>
-            <mat-divider></mat-divider>
           </div>
+        </div>
+      </mat-expansion-panel>
       </div>
+      </mat-accordion>
     </div>
-  </mat-expansion-panel>
   </div>
-  </mat-accordion>
-</div>

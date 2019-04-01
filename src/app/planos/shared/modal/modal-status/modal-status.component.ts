@@ -64,7 +64,6 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         this.plannersService.openSnackBar('Status alterado com sucesso', 'Ok!');
         this.dialogRef.close();
-        this.plannersService.getAll();
       },
       error => console.error(error));
     }
@@ -72,7 +71,6 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (this.data.status === 'start') {
-      
       this.startPlanner = true;
     } else if (this.data.status === 'end') {
       this.startPlanner = false;

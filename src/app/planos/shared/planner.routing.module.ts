@@ -8,7 +8,8 @@ import { PlannerInfoComponent } from '../plano/plano-info/planner-info.component
 const appRoutes = [
     { path: '', component: PlannerComponent, children: [
     { path: 'planner/:id/edit', component: ModalFormComponent},
-    { path: 'planner/:id', component: PlannerInfoComponent}
+    { path: 'planner/:id', component: PlannerInfoComponent},
+    { path: 'planner/:filter', component: PlannerComponent}
     ]}
 ];
 

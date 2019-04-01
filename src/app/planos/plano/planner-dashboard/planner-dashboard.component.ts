@@ -22,6 +22,11 @@ export class PlannerDashboardComponent implements OnInit {
   planners: Planner;
 
   ngOnInit() {
+    this.totalOnProcess = 0;
+    this.totalFinished = 0;
+    this.totalCanceled = 0;
+    this.totalSuspended = 0;
+    this.totalNoData = 0;
     this.countTotal();
   }
 

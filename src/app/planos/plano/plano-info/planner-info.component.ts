@@ -28,7 +28,7 @@ export class PlannerInfoComponent implements OnInit, OnDestroy {
     .filter(planners => {
       if (planners.belongsTo === this.planner.name) {
         this.subPlanners++;
-        console.log("aaa");
+        console.log('aaa');
         console.log(this.subPlanners);
       }
     });

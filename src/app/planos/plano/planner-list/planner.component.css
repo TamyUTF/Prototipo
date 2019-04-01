@@ -1,3 +1,9 @@
+.planners {
+    position: relative;
+    top: 0px;
+
+}
+
 .card-title {
     width: 50em;
     height: 70px;
@@ -41,6 +47,7 @@
 }
 
 .planner-list {
+    background-color: ;
     flex-direction: column;
     box-sizing: border-box;
     display: block;
