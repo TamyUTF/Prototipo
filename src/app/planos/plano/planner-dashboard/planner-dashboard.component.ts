@@ -37,10 +37,12 @@ export class PlannerDashboardComponent implements OnInit {
           this.totalCanceled++;
         } else if (planner.status === 'Aberto') {
           this.totalOnProcess++;
-        } else if (planner.status === 'Aguardando início'){
+        } else if (planner.status === 'Aguardando início') {
           this.totalNoData++;
-        } else if (planner.status === 'Suspendido'){
+        } else if (planner.status === 'Suspendido') {
           this.totalSuspended++;
+        } else {
+          this.totalNoData++;
         }
       });
     }

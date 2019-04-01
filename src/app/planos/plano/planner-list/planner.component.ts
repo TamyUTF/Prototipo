@@ -33,7 +33,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
                }
   subs: Subscription;
   deleteSubs: Subscription;
-  filterPlanners: false;
+  filterPlanners: any;
   panelOpen: false;
   filter = false;
 
@@ -45,7 +45,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.direction = 'ltr';
     dialogConfig.width = '500px';
-    dialogConfig.height = '600px';
+    dialogConfig.height = '400px';
     dialogConfig.data = {
       id: planner.id
     };

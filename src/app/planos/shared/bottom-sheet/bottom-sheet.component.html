@@ -40,8 +40,7 @@
       </mat-form-field>
       <div class="planner-date">
         <mat-form-field>
-          <input matInput [(ngModel)] = "minDate"
-                          placeholder = "Início"
+          <input matInput placeholder = "Início"
                           [matDatepicker] ="pickerStart"
                           floatLabel = "always"
                           formControlName = "start" />
@@ -49,7 +48,7 @@
           <mat-datepicker #pickerStart></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input  matInput  [min] = "minDate"
+          <input  matInput  [min] = "form.get('start').value"
                             placeholder = "Fim"
                             [matDatepicker] ="pickerEnd"
                             floatLabel = "always"

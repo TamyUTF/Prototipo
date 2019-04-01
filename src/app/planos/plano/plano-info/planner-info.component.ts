@@ -16,12 +16,22 @@ export class PlannerInfoComponent implements OnInit, OnDestroy {
               private dialogRef: MatDialogRef<PlannerInfoComponent>,
               @Inject(MAT_DIALOG_DATA) public data) { }
   planner: Planner;
-  subsPlanners: Planner;
+  subPlanners = 0;
   subs: Subscription;
 
   ngOnInit() {
-    console.log(this.data.id);
     this.getPlanner();
+  }
+
+  subPlannerCount() {
+    this.plannersService.planners
+    .filter(planners => {
+      if (planners.belongsTo === this.planner.name) {
+        this.subPlanners++;
+        console.log("aaa");
+        console.log(this.subPlanners);
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -37,7 +47,10 @@ export class PlannerInfoComponent implements OnInit, OnDestroy {
   getPlanner() {
     this.plannersService.getPlanner(this.data.id).subscribe(planner => {
       this.planner = planner;
+      console.log(planner);
     }, error => console.error);
+
+    this.subPlannerCount();
   }
 
 }
