@@ -1,7 +1,7 @@
 import { InvolvedsService } from './../involveds.service';
 import { TypesService } from './../types.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA, MatDialog, MatDialogConfig } from '@angular/material';
 import { Subscription, Observable } from 'rxjs';
@@ -9,7 +9,6 @@ import { Subscription, Observable } from 'rxjs';
 import { PlannerService } from '../planner.service';
 import { Planner } from '../planner.model';
 import { ModalFormComponent } from '../modal/modal-form.component';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
 @Component({
   selector: 'app-bottom-sheet',
@@ -39,6 +38,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   subsForm: Subscription;
   edit = false;
   planner$: Observable<Planner>;
+  teste: any;
 
   ngOnInit() {
     console.log('estou no bottom sheet');
@@ -57,23 +57,41 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
     }
   }
 
+  /*changeStatus(statusPlanner) {
+    this.form.setValue({
+      name: this.form.get('name').value,
+      type: this.form.get('type').value,
+      charge: this.form.get('charge').value,
+      start: this.form.get('start').value,
+      end: this.form.get('end').value,
+      status: statusPlanner,
+      belongsTo: this.form.get('belongsTo').value,
+        details: this.fBuilder.group({
+        description: this.form.get('description').value,
+        involveds: this.form.get('involveds').value,
+        price: this.form.get('price').value
+      })
+    });
+
+  }
+
   setStatus() {
-    if (this.form.get('start').value == null && this.form.get('end').value) {
-      this.form.setValue({status: 'Aguardando início'});
+    if (this.form.get('start').value == 'Invalid Date' && this.form.get('end').value == null) {
+      this.changeStatus('Aguardando início');
     } else if (this.form.get('start').value == null && this.form.get('end').value !== null) {
-      this.form.setValue({status: 'Aberto'});
+      this.changeStatus('Aberto');
      } else if (this.form.get('start').value !== null && this.form.get('end').value !== null) {
       if (this.form.get('end').value < this.todayDate) {
-        this.form.setValue({status: 'Aberto'});
+        this.changeStatus('Aberto');
       } else {
-        this.form.setValue({status: 'Atrasado'});
+        this.changeStatus('Atrasado');
       }
     }
-  }
+  }*/
 
   onSubmit() {
     console.log(this.form.value);
-    this.setStatus();
+    //this.setStatus();
     if (this.data !== null) {
       this.subsForm = this.plannersService.updatePlanner(this.data.id, this.form.value)
       .subscribe(res => {
@@ -91,7 +109,6 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
     },
     error => console.error(error));
     }
-
   }
 
   openModal(str: string) {
@@ -99,7 +116,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
     dialogConfig.autoFocus = true;
     dialogConfig.direction = 'ltr';
     dialogConfig.width = '350px';
-    dialogConfig.height = '250px';
+    dialogConfig.height = '200px';
     dialogConfig.data = {
       type: str
     };
@@ -117,18 +134,17 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
 
   createForm() {
     this.form = this.fBuilder.group({
-      id: [null],
-      name: [null],
-      type: [null],
-      charge: [null],
+      name: [null, [Validators.required, Validators.minLength(3)]],
+      type: [null, [Validators.required]],
+      charge: [null, [Validators.required]],
       start: [null],
       end: [null],
       status: [null],
       belongsTo: [null],
-        details: this.fBuilder.group( {
-        description: [null],
-        involveds: [null],
-        price: [null]
+        details: this.fBuilder.group({
+        description: [null, [Validators.required]],
+        involveds: [null, [Validators.required]],
+        price: [null, [Validators.required]]
       })
     });
   }

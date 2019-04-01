@@ -1,4 +1,9 @@
-.card-title { 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
     width: 900px;
     height: 70px;
     margin: 10px 0px;
@@ -9,19 +14,80 @@
 }
 
 .card-title h2 {
-    margin: 20px 0px 20px 30px;
-    color: #575757;
-    width: 100%;
+  margin: 20px 0px 20px 30px;
+  color: #575757;
+  width: 100%;
+}
+
+.dashboard-list {
+  width: 900px;
+}
+
+.flex {
+  display: flex;
+  position: relative;
+  place-content: stretch space-between;
 }
 
 .dashboard-list .mat-card {
-    margin: 10px 0px;
+  width: 400px;
+  height: 150px;
+  margin: 10px auto;
+  position: relative;
+}
+
+.mat-card-title {
+  align-items: baseline;
+}
+
+.mat-divider {
+  margin: 10px 0px;
 }
 
 .mat-card-title a {
     cursor: default;
 }
 
-.mat-card-title .mat-fab {
+.mat-card-title .mat-mini-fab {
     box-shadow: none;
+}
+
+.mat-card-content {
+  font-size: 20pt;
+  margin: 20px 0px;
+}
+
+.my-planners a {
+  background-color: rgb(61, 150, 223);
+  color: #fff;
+}
+
+.all-planners a {
+  background-color: #000;
+  color: #fff;
+}
+
+.finished-planners a {
+  background-color: #00bf00 ;
+  color: #fff;
+}
+
+.canceled-planners a {
+  background-color: #ff0f0f ;
+  color: #fff;
+}
+
+.ongoing-planners a {
+  background-color: #ffe817 ;
+  color: #000;
+}
+
+.noData a {
+  background-color: #808080;
+  color: #000;
+}
+
+.suspended-planners a {
+  background-color: #ffaa2b;
+  color: #000;
 }

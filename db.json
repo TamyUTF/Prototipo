@@ -7,7 +7,7 @@
       "charge": "Responsável 1",
       "start": "2019-03-01T03:00:00.000Z",
       "end": "2019-03-29T03:00:00.000Z",
-      "status": "Concluído",
+      "status": "Cancelado",
       "belongsTo": "Plano 2",
       "details": {
         "description": "Plano 1 referente aos planos para tomada de decisões.",
@@ -112,9 +112,9 @@
       "name": "Plano 10",
       "type": "Tipo 3",
       "charge": "Fulaninho",
-      "start": null,
+      "start": "2019-03-31T03:00:00.000Z",
       "end": "2019-05-31T03:00:00.000Z",
-      "status": null,
+      "status": "Aberto",
       "belongsTo": "none",
       "details": {
         "description": "asdasdasdasd",
@@ -131,9 +131,9 @@
       "name": "Plano 11",
       "type": "tipo 9",
       "charge": "Jamalaaaaaaa",
-      "start": null,
-      "end": null,
-      "status": "Suspendido",
+      "start": "2019-03-31T03:00:00.000Z",
+      "end": "2019-04-10T03:00:00.000Z",
+      "status": "Aberto",
       "belongsTo": "Plano 10",
       "details": {
         "description": "sdfasdfsf",
@@ -144,6 +144,64 @@
         ],
         "price": "500.00"
       }
+    },
+    {
+      "id": 10,
+      "name": "Plano 15",
+      "type": "Tipo 4",
+      "charge": "William",
+      "start": null,
+      "end": null,
+      "status": null,
+      "belongsTo": "none",
+      "details": {
+        "description": "adsadsadsad",
+        "involveds": [
+          "Envolvido 1",
+          "Envolvido 2",
+          "Envolvido 3",
+          "Envolvido 5"
+        ],
+        "price": "500.00"
+      }
+    },
+    {
+      "name": "Plano 21 ",
+      "type": "Tipo 11",
+      "charge": "Tamyres",
+      "start": "2019-03-27T03:00:00.000Z",
+      "end": "2019-04-10T03:00:00.000Z",
+      "status": null,
+      "belongsTo": "none",
+      "details": {
+        "description": "sdfsfsdf",
+        "involveds": [
+          "Envolvido 1",
+          "Envolvido 2",
+          "Envolvido 3",
+          "Envolvido 5",
+          "Envolvido 10"
+        ],
+        "price": "800.00"
+      },
+      "id": 11
+    },
+    {
+      "name": "Plano 666",
+      "type": "Tipo 3",
+      "charge": "Sigurd",
+      "start": "2019-03-31T03:00:00.000Z",
+      "end": "2019-04-13T03:00:00.000Z",
+      "status": null,
+      "belongsTo": "none",
+      "details": {
+        "description": "asdasdsad",
+        "involveds": [
+          "Envolvido 5"
+        ],
+        "price": "800.00"
+      },
+      "id": 12
     }
   ],
   "types": [
@@ -166,6 +224,10 @@
     {
       "id": 5,
       "type": "tipo 9"
+    },
+    {
+      "id": 6,
+      "type": "Tipo 11"
     }
   ],
   "involveds": [
@@ -184,6 +246,10 @@
     {
       "id": 4,
       "involved": "Envolvido 5"
+    },
+    {
+      "id": 5,
+      "involved": "Envolvido 10"
     }
   ]
 }

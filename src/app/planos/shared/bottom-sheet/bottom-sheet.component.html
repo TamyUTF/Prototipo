@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar *ngIf = "form">
   <h2 *ngIf = "!edit">Cadastrar plano</h2>
   <h2 *ngIf = "edit">Editar plano</h2>
   <button mat-icon-button (click)="close()">
@@ -7,41 +7,41 @@
 </mat-toolbar>
 <mat-dialog-content class="container">
 <mat-tab-group [selectedIndex]="selectedIndex">
-  <mat-tab label="Geral">  
+  <mat-tab label="Geral">
     <form class="form" [formGroup]="form">
       <mat-form-field>
-        <input  hideRequiredMarker = "true"
-                matInput max-length="200" 
-                placeholder = "Nome (o que?)" 
+        <input  matInput max-length="200"
+                placeholder = "Nome (o que?)"
                 floatLabel = "always"
                 formControlName = "name" />
+        <mat-error *ngIf = "form.get('name').touched && form.get('name').hasError">Insira o nome do plano</mat-error>
       </mat-form-field>
       <div class = "planner-type">
         <mat-form-field>
-        <mat-select placeholder = "Tipo do plano" 
+        <mat-select placeholder = "Tipo do plano"
                     floatLabel = "always"
-                    formControlName = "type"
-                    hideRequiredMarker = "true">
-          <mat-option *ngFor = "let type of typesService.types$ | async" 
+                    formControlName = "type">
+          <mat-option *ngFor = "let type of typesService.types$ | async"
                       [value]="type.type">
             {{type.type}}
           </mat-option>
-         </mat-select>            
+         </mat-select>
+         <mat-error *ngIf = "form.get('type').touched && form.get('type').hasError">Informe o tipo de plano</mat-error>
         </mat-form-field>
-        <button mat-icon-button (click)="openModal('type')">
+        <button mat-icon-button type="button" (click)="openModal('type')">
           <mat-icon>add</mat-icon>
         </button>
       </div>
       <mat-form-field>
-        <input  matInput  placeholder = "Responsável (quem?)" 
+        <input  matInput  placeholder = "Responsável (quem?)"
                           floatLabel = "always"
-                          formControlName = "charge"
-                          hideRequiredMarker = "true" />
+                          formControlName = "charge"/>
+          <mat-error>Informe o responsável do plano</mat-error>
       </mat-form-field>
       <div class="planner-date">
         <mat-form-field>
           <input matInput [(ngModel)] = "minDate"
-                          placeholder = "Início" 
+                          placeholder = "Início"
                           [matDatepicker] ="pickerStart"
                           floatLabel = "always"
                           formControlName = "start" />
@@ -50,7 +50,7 @@
         </mat-form-field>
         <mat-form-field>
           <input  matInput  [min] = "minDate"
-                            placeholder = "Fim" 
+                            placeholder = "Fim"
                             [matDatepicker] ="pickerEnd"
                             floatLabel = "always"
                             formControlName = "end" />
@@ -58,17 +58,18 @@
           <mat-datepicker #pickerEnd></mat-datepicker>
         </mat-form-field>
       </div>
-      
+
       <mat-form-field>
-        <mat-select placeholder = "Pertence ao plano" 
+        <mat-select placeholder = "Pertence ao plano"
                     floatLabel = "always"
                     formControlName = "belongsTo">
           <mat-option value="none">Nenhum
-          </mat-option>          
+          </mat-option>
+          {{teste}}
           <mat-option *ngFor = "let planner of plannersService.planners" [value]="planner.name">
             {{planner.name}}
           </mat-option>
-        </mat-select>       
+        </mat-select>
       </mat-form-field>
     </form>
   </mat-tab>
@@ -80,16 +81,18 @@
                   max-length = "1000"
                   formControlName = "description">
         </textarea>
+        <mat-error *ngIf = "form.get('details.description').touched && form.get('details.description').hasError">Descreva o plano</mat-error>
       </mat-form-field>
       <div class="planner-involveds">
         <mat-form-field>
           <mat-select placeholder="Pessoas interessadas"
                       formControlName = "involveds"
-                      multiple> 
+                      multiple>
             <mat-option *ngFor="let involved of involvedsService.involveds$ | async" [value]="involved.involved">
               {{involved.involved}}
-            </mat-option>                     
+            </mat-option>
           </mat-select>
+          <mat-error *ngIf = "form.get('details.involveds').touched && form.get('details.involveds').hasError">Selecione pelo menos um envolvido.</mat-error>
         </mat-form-field>
         <button mat-icon-button type="button" (click)="openModal('involved')">
           <mat-icon>add</mat-icon>
@@ -98,12 +101,13 @@
 
       <mat-form-field>
         <span matPrefix>R$</span>
-        <input matInput placeholder="Custo estimado"
+        <input matInput placeholder=" Custo estimado"
                         formControlName = "price"/>
+          <mat-error *ngIf = "form.get('details.price').touched && form.get('details.price').hasError">Informe o capital necessário</mat-error>
       </mat-form-field>
       </div>
       <button mat-raised-button type="submit">Enviar</button>
     </form>
-  </mat-tab>  
+  </mat-tab>
 </mat-tab-group>
 </mat-dialog-content>

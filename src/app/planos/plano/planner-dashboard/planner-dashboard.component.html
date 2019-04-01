@@ -1,53 +1,77 @@
-<mat-card class="card-title">
-  <mat-icon class="dashboard">dashboard</mat-icon>
-  <h2>Dashboard</h2>
-</mat-card>
-
-<div class = "dashboard-list">
-  <mat-card>
-    <mat-card-title>
-      <mat-icon>list_alt</mat-icon>
-      Todos meus planos
-    </mat-card-title>
-    <mat-card-content>
-    </mat-card-content>
-  </mat-card>
-  <mat-card>
-    <mat-card-title>
-      <mat-icon>bar_chart</mat-icon>
-      Quantidade de planos
-    </mat-card-title>
-    <mat-card-content></mat-card-content>
+<div class="container">
+  <mat-card class="card-title">
+    <mat-icon class="dashboard">dashboard</mat-icon>
+    <h2>Dashboard</h2>
   </mat-card>
 
-  <mat-card>
-    <mat-card-title>
-      <mat-icon>check</mat-icon>
-      Planos concluídos
-    </mat-card-title>
-    <mat-card-content>
+  <div class = "dashboard-list">
+    <div class="flex">
+      <mat-card class="all-planners">
+        <mat-card-title>
+          <a mat-mini-fab><mat-icon>bar_chart</mat-icon></a>
+          Total de planos
+          <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+          <b>{{totalPlanners}}</b> planos totais.
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="ongoing-planners">
+        <mat-card-title>
+            <a mat-mini-fab><mat-icon>play_arrow</mat-icon></a>
+          Planos em andamento
+          <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+          <b>{{totalOnProcess}}</b> planos em andamento.
+        </mat-card-content>
+      </mat-card>
+    </div>
 
-    </mat-card-content>
-  </mat-card>
+    <div class="flex">
+      <mat-card class="finished-planners">
+        <mat-card-title>
+          <a mat-mini-fab><mat-icon>check</mat-icon></a>
+          Planos concluídos
+          <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+          <b>{{totalFinished}}</b> planos concluídos.
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="canceled-planners">
+        <mat-card-title>
+          <a mat-mini-fab><mat-icon >close</mat-icon></a>
+          Planos cancelados
+          <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+          <b>{{totalCanceled}}</b> planos cancelados.
+        </mat-card-content>
+      </mat-card>
+    </div>
 
-  <mat-card>
-    <mat-card-title>
-      <a mat-fab><mat-icon >close</mat-icon></a>
-      
-      Planos cancelados
-    </mat-card-title>
-    <mat-card-content>
-
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card>
-    <mat-card-title>
-      Planos em andamento
-    </mat-card-title>
-    <mat-card-content>
-
-    </mat-card-content>
-  </mat-card>
-
+    <div class="flex">
+      <mat-card class="noData-planners">
+        <mat-card-title>
+          <a mat-mini-fab><mat-icon>check</mat-icon></a>
+          Planos sem prazo
+          <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+          <b>{{totalNoData}}</b> planos sem prazo.
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="suspended-planners">
+        <mat-card-title>
+          <a mat-mini-fab><mat-icon>pause</mat-icon></a>
+          Planos Suspendidos
+          <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+          <b>{{totalSuspended}}</b> planos suspendidos.
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>

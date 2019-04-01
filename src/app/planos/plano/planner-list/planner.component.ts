@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatBottomSheet, MatBottomSheetConfig} from '@angular/material';
@@ -31,8 +32,10 @@ export class PlannerComponent implements OnInit, OnDestroy {
                }
   subs: Subscription;
   deleteSubs: Subscription;
-  subPlanners: false;
+  filterPlanners: false;
   panelOpen: false;
+  filter = false;
+
   ngOnInit() {
 
   }
@@ -49,6 +52,18 @@ export class PlannerComponent implements OnInit, OnDestroy {
     if (this.deleteSubs) {
       this.deleteSubs.unsubscribe();
     }
+  }
+
+  filterCanceled() {
+    this.plannerService.planners.filter(planners => planners.status === 'Cancelado');
+  }
+
+  filterOnProgress() {
+    this.plannerService.planners.filter(planners => planners.status === 'Aberto');
+  }
+
+  filterFinished() {
+    this.plannerService.planners.filter(planners => planners.status === 'Concluído');
   }
 
   edit(planner) {

@@ -11,6 +11,18 @@
     display: flex;
     place-content: center flex-start;
     align-items: center;
+
+}
+
+.mat-toolbar h5 {
+  border-left: 5px solid #4fa7ff;
+  font-size: 15pt;
+  flex: auto;
+  height: 100%;
+}
+
+.mat-toolbar h2 {
+  margin: 0px 20px;
 }
 
 .mat-list-base {
@@ -29,8 +41,10 @@
 
 .user-nav {
     display: flex;
+    flex-direction: row-reverse;
     place-content: center;
     align-items: center;
+    margin: 0px 10px;
 }
 .user-info {
     display: block;
@@ -45,6 +59,7 @@
 .user-info mat-card-subtitle {
     margin: 0;
     color: rgba(221, 221, 221, 0.801);
+    float: right;
 }
 
 .menu-links .mat-list-item {

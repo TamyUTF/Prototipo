@@ -24,6 +24,7 @@ body {
 .mat-bottom-sheet-container {
     padding: 0px !important;
     padding-bottom: 800px !important;
+    overflow: hidden !important;
 }
 
 .mat-expansion-panel-header-description {
@@ -32,4 +33,4 @@ body {
 
 .mat-expansion-panel-body {
     padding: 0 24px 0px !important;
-} 
+}

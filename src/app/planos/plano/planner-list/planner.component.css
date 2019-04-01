@@ -1,15 +1,4 @@
-@media screen and (max-width: 500px) {
-    .planner-list {
-        width: 350px;
-    }
-
-    .card-title {
-        background-color: black;
-        width: 90%;
-    }
-}
-
-.card-title { 
+.card-title {
     width: 50em;
     height: 70px;
     margin: 10px 0px;
@@ -39,6 +28,11 @@
     padding: 0px 5px 5px 3px;
 }
 
+.charge-info img {
+  width: 30px;
+  height: 30px;
+}
+
 .planner-list {
     flex-direction: column;
     box-sizing: border-box;
@@ -49,6 +43,7 @@
     width: 100%;
     box-shadow: 2px 2px 3px rgb(0, 0, 0, .2);
     margin-bottom: 10px;
+    padding: 5px;
 }
 
 .mat-menu.content .mat-fab .mat-accent {
@@ -63,7 +58,7 @@
 .planner-expansion .menu {
     margin:auto;
 }
-.planner-info {
+.subPlanner-info {
     flex-direction: column;
     padding-left: 20px;
     line-height: 5px;
@@ -74,9 +69,12 @@
     box-sizing: border-box;
 }
 
-
 .mat-expansion-panel-header {
     background-color: #cfcfcf73;
+}
+
+.mat-expansion-panel-header-description {
+  flex: unset;
 }
 
 .subplanner-item {
