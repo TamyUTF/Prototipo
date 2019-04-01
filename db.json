@@ -185,23 +185,6 @@
         "price": "800.00"
       },
       "id": 11
-    },
-    {
-      "name": "Plano 666",
-      "type": "Tipo 3",
-      "charge": "Sigurd",
-      "start": "2019-03-31T03:00:00.000Z",
-      "end": "2019-04-13T03:00:00.000Z",
-      "status": null,
-      "belongsTo": "none",
-      "details": {
-        "description": "asdasdsad",
-        "involveds": [
-          "Envolvido 5"
-        ],
-        "price": "800.00"
-      },
-      "id": 12
     }
   ],
   "types": [

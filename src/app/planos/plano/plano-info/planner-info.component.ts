@@ -20,12 +20,18 @@ export class PlannerInfoComponent implements OnInit, OnDestroy {
   subs: Subscription;
 
   ngOnInit() {
+    console.log(this.data.id);
+    this.getPlanner();
   }
 
   ngOnDestroy() {
     if (this.subs) {
       this.subs.unsubscribe();
     }
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
   getPlanner() {

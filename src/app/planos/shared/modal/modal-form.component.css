@@ -18,6 +18,17 @@
     align-items: stretch;
 }
 
+.cancel {
+  background-color: #c0c0c098;
+  font-weight: bold;
+}
+
+.submit {
+  background-color: rgb(61, 150, 223);
+  font-weight: bold;
+  color: #fff;
+}
+
 form {
     margin: 10px;
     height: 100%;
@@ -28,3 +39,5 @@ form {
     align-items: stretch;
     max-width: 100%;
 }
+
+

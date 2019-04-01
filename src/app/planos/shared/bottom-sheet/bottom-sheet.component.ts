@@ -91,8 +91,8 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.form.value);
-    //this.setStatus();
-    if (this.data !== null) {
+    if (this.form.valid) {
+      if (this.data !== null) {
       this.subsForm = this.plannersService.updatePlanner(this.data.id, this.form.value)
       .subscribe(res => {
         this.plannersService.openSnackBar('Plano editado com sucesso!', 'Oba!');
@@ -107,7 +107,10 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
       this.plannersService.getAll();
       this.close();
     },
-    error => console.error(error));
+      error => console.error(error));
+      }
+    } else {
+      this.plannersService.openSnackBar('Preencha todos os campos.', 'Ok!');
     }
   }
 

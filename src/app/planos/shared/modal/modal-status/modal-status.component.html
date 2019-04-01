@@ -7,7 +7,7 @@
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field *ngIf = "startPlanner">
-      <input  matInput 
+      <input  matInput
               required
               placeholder= "Data de início"
               floatLabel= "always"
@@ -16,9 +16,9 @@
         <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
         <mat-datepicker #pickerStart></mat-datepicker>
         <mat-error>Informe uma data para início.</mat-error>
-    </mat-form-field>  
+    </mat-form-field>
     <mat-form-field *ngIf = "startPlanner">
-      <input  matInput 
+      <input  matInput
               placeholder= "Data de conclusão"
               floatLabel= "always"
               [min]="form.get('start').value"
@@ -29,7 +29,7 @@
     </mat-form-field>
 
     <mat-form-field *ngIf = "!startPlanner">
-        <input  matInput 
+        <input  matInput
               required
               placeholder= "Data de início"
               floatLabel= "always"
@@ -40,7 +40,7 @@
         <mat-error>Informe a data de início.</mat-error>
       </mat-form-field>
       <mat-form-field *ngIf = "!startPlanner">
-          <input  matInput 
+          <input  matInput
                 required
                 placeholder= "Data de Conclusão"
                 floatLabel= "always"
@@ -53,8 +53,8 @@
           <mat-error>Informe a data de conclusão.</mat-error>
         </mat-form-field>
       <div class="modal-buttons">
-        <button mat-raised-button type="button" (click)="cancel()">Cancelar</button>
-        <button mat-raised-button type="submit">Confirmar</button>
+        <button class = "cancel" mat-raised-button type="button" (click)="cancel()">Cancelar</button>
+        <button class = "submit" mat-raised-button type="submit">Confirmar</button>
       </div>
     </form>
   </mat-dialog-content>

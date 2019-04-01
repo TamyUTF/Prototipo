@@ -1,3 +1,4 @@
+import { PlannerInfoComponent } from './../plano-info/planner-info.component';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -38,6 +39,18 @@ export class PlannerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+  }
+
+  view(planner) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.direction = 'ltr';
+    dialogConfig.width = '500px';
+    dialogConfig.height = '600px';
+    dialogConfig.data = {
+      id: planner.id
+    };
+
+    this.modal.open(PlannerInfoComponent, dialogConfig);
   }
 
   drop(event: CdkDragDrop<any[]>) {
@@ -101,10 +114,6 @@ export class PlannerComponent implements OnInit, OnDestroy {
       },
       error => console.error(error)
     );
-  }
-
-  view(planner) {
-    //  this.openModalInfo();
   }
 
   create() {

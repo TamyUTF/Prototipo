@@ -1,1 +1,21 @@
+<mat-toolbar>
+  <h1>{{planner.name}}</h1>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
 
+<div class="planner-info">
+<span>Nome: {{planner.name}}</span>
+<span>Tipo: {{planner.type}}</span>
+<span>Responsável: {{planner.charge}}</span>
+<span>Início: {{planner.start}}</span>
+<span>Fim: {{planner.end}}</span>
+<span>Pertence ao plano: {{planner.belongsTo}}</span>
+<span>Status: {{planner.status}}</span>
+<span>Envolvidos: {{planner.details.involveds}}</span>
+<span>Preço: {{planner.details.price}}</span>
+<span>Descrição: {{planner.details.description}}</span>
+
+
+</div>
