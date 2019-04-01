@@ -47,7 +47,6 @@
 }
 
 .planner-list {
-    background-color: ;
     flex-direction: column;
     box-sizing: border-box;
     display: block;
@@ -89,7 +88,6 @@
 }
 
 .mat-expansion-panel-header-description {
-  flex: unset;
   margin: 0;
 }
 

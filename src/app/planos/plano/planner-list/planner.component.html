@@ -5,7 +5,7 @@
       </button>
       <mat-menu class="menu-filter" #filter="matMenu">
         <button mat-menu-item (click)="getAll()">
-          <mat-icon >check</mat-icon>
+          <mat-icon >reorder</mat-icon>
           <span>Todos os planos</span>
         </button>
       <button mat-menu-item (click)="filterFinished('Concluído')">
@@ -26,10 +26,14 @@
         <mat-icon >add</mat-icon>
       </button>
   </mat-card>
+  <ng-container>
+    desapertei botao
+  </ng-container>
 
-  <ng-container *ngIf="!filter;else showFilter"></ng-container>
-  <ng-template #showFilter></ng-template>
-
+  <ng-container>
+    apertei botao
+  </ng-container>
+  
 
     <div class = "planner-list" *ngIf = "plannerService.planners as planners" >
       <mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
@@ -88,7 +92,7 @@
         </mat-expansion-panel-header>
         <div *ngFor = "let subPlanner of planners">
           <div *ngIf = "subPlanner.belongsTo === planner.name">
-              <div class="subplanner-item" [ngClass]="{'planner2': subPlanner.status == 'Concluído',
+              <div class="subplanner-item" [ngClass]="{ 'planner2': subPlanner.status == 'Concluído',
                                                         'planner3': subPlanner.status == 'Aberto',
                                                         'planner1': subPlanner.status == 'Suspendido',
                                                         'planner4': subPlanner.status == 'Cancelado'}">

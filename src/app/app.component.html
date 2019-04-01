@@ -3,7 +3,7 @@
     <button  mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h2>Qualiex</h2>
+    <img class="qualiex" src='../assets/qualiex_branco.png'>
     <h5>Planner</h5>
     <div class="user-nav">
       <img mat-card-avatar
@@ -27,9 +27,7 @@
       </mat-list>
     </mat-sidenav>
       <mat-sidenav-content>
-        <div class="container">
-            <router-outlet></router-outlet>
-        </div>
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

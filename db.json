@@ -38,12 +38,11 @@
       "status": "Suspendido"
     },
     {
-      "id": 3,
       "name": "Plano 3",
       "type": "Tipo 3",
       "charge": "Joazinho",
-      "start": "2019-03-27T13:20:38.622Z",
-      "end": "2019-04-10T03:00:00.000Z",
+      "start": null,
+      "end": null,
       "belongsTo": "none",
       "details": {
         "description": "sdfafsdfsadf",
@@ -53,7 +52,8 @@
           "Envolvido 3"
         ],
         "price": "700.00"
-      }
+      },
+      "id": 3
     },
     {
       "id": 5,
@@ -191,7 +191,7 @@
       "charge": "Tamyres",
       "start": "2019-03-24T03:00:00.000Z",
       "end": "2019-04-01T03:00:00.000Z",
-      "status": "Concluído",
+      "status": "Cancelado",
       "belongsTo": "Plano 2",
       "details": {
         "description": "Descrição do plano 2.2, pertencente ao Plano 2.",

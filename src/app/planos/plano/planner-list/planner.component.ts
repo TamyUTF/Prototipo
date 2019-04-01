@@ -34,9 +34,10 @@ export class PlannerComponent implements OnInit, OnDestroy {
   subs: Subscription;
   deleteSubs: Subscription;
   filterPlanners: any;
+  filterSubplanners: any;
   panelOpen: false;
-  filter = false;
-
+  aux = 'none';
+  aux1 = 'block';
   ngOnInit() {
 
   }
@@ -68,11 +69,16 @@ export class PlannerComponent implements OnInit, OnDestroy {
   }
 
   filterCanceled(status) {
-    this.router.navigate([`planner/${status}`]);
     this.plannerService.planners = this.plannerService.planners.filter(planners => {
       if ( planners.status === 'Cancelado') {
+        if (planners.belongsTo === 'none' ||  planners.belongsTo == null) { // se ele for pai
+          this.filterPlanners = planners;
+        } else if (planners.) {
+          this.filterSubplanners = planners;
         }
+      }
     });
+    this.plannerService.planners = [...this.filterPlanners, ...this.filterSubplanners];
   }
 
   filterOnProgress() {
@@ -80,7 +86,9 @@ export class PlannerComponent implements OnInit, OnDestroy {
   }
 
   filterFinished() {
-    this.plannerService.planners.filter(planners => planners.status === 'Concluído');
+    this.aux = 'block';
+    this.aux1 = 'none';
+    // this.plannerService.planners.filter(planners => planners.status === 'Concluído');
   }
 
   edit(planner) {

@@ -41,13 +41,8 @@
 
   <span><b>Envolvidos:</b> {{planner.details.involveds}}</span><br>
   <span><b>Preço:</b> R${{planner.details.price}}</span><br>
-  <ng-container>
-      <span *ngIf= "subPlanners > 0; else noSubplanners"><b>Subplanos:</b> {{subPlanners}}</span><br>
-  </ng-container>
-  <ng-template #noSubplanners>
+  <mat-divider></mat-divider>
 
-  </ng-template>
-  
   <span><b>Descrição:</b> {{planner.details.description}}</span><br>
 
 </div>

@@ -20,6 +20,12 @@
 
 }
 
+.qualiex {
+    width: 100px;
+    height: 35px;
+    margin: 0px 10px;
+}
+
 .mat-toolbar h5 {
     border-left: 5px solid #4fa7ff;
     font-size: 15pt;
@@ -27,7 +33,7 @@
     height: 100%;
     padding-top: 20px;
     padding-left: 10px;
-    margin-left: 20px;
+    margin: 3px 0px 3px 20px;
 }
 
 .mat-toolbar h2 {
@@ -38,13 +44,12 @@
     padding: 0px;
 }
 
-.container {
+.mat-sidenav-content {
     background-color: #c8c8c879;;
-    min-height: calc(100vh - 64px);
+    min-height: 100vh;
     height: 100%;
     flex-direction: column;
     display: flex;
-    place-content: center space-around;
     align-items: center;
 }
 
@@ -86,7 +91,8 @@
 }
 
 .mat-list-item:hover {
-    background-color: rgba(221, 221, 221, 0.801);
+    background-color: #b1b1ff4f;
+    font-weight: 500;
     transition: 0.2s;
 }
 
