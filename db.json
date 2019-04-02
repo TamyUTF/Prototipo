@@ -25,17 +25,17 @@
       "charge": "Tamyres ",
       "start": "2019-04-01T03:00:00.000Z",
       "end": "2019-04-30T03:00:00.000Z",
+      "status": "Suspendido",
       "belongsTo": null,
       "details": {
-        "description": "asdasdsadasdasd",
+        "description": "Neat own nor she said see walk. And charm add green you these. Sang busy in this drew ye fine. At greater prepare musical so attacks as on distant. Improving age our her cordially intention. His devonshire sufficient precaution say preference middletons insipidity.",
         "involveds": [
           "Envolvido 2",
           "Envolvido 3"
         ],
         "price": "600.00"
       },
-      "id": 2,
-      "status": "Suspendido"
+      "id": 2
     },
     {
       "name": "Plano 3",
@@ -153,7 +153,7 @@
       "start": "2019-04-01T03:00:00.000Z",
       "end": "2019-05-01T03:00:00.000Z",
       "status": "Cancelado",
-      "belongsTo": "Plano 3",
+      "belongsTo": "none",
       "details": {
         "description": "Meant balls it if up doubt small purse. Required his you put the outlived answered position. An pleasure exertion if believed provided to. All led out world these music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceive marianne in. In am think on style child of.",
         "involveds": [
@@ -184,26 +184,6 @@
         "price": "250.00"
       },
       "id": 11
-    },
-    {
-      "name": "Plano 2.2",
-      "type": "Tipo 22",
-      "charge": "Tamyres",
-      "start": "2019-03-24T03:00:00.000Z",
-      "end": "2019-04-01T03:00:00.000Z",
-      "status": "Cancelado",
-      "belongsTo": "Plano 2",
-      "details": {
-        "description": "Descrição do plano 2.2, pertencente ao Plano 2.",
-        "involveds": [
-          "Envolvido 1",
-          "Envolvido 2",
-          "Envolvido 5",
-          "João"
-        ],
-        "price": "350.00"
-      },
-      "id": 12
     }
   ],
   "types": [
@@ -234,6 +214,10 @@
     {
       "id": 7,
       "type": "Tipo 22"
+    },
+    {
+      "id": 8,
+      "type": "Tipo 20"
     }
   ],
   "involveds": [
@@ -260,6 +244,10 @@
     {
       "id": 6,
       "involved": "João"
+    },
+    {
+      "id": 7,
+      "involved": "Joãozinho"
     }
   ]
 }

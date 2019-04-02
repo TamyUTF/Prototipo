@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {MatDialog, MatDialogConfig, MatBottomSheet, MatBottomSheetConfig} from '@angular/material';
 import { Subscription } from 'rxjs';
-import * as moment from 'moment';
 import 'moment/locale/pt-br';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
@@ -69,7 +68,8 @@ export class PlannerComponent implements OnInit, OnDestroy {
   }
 
   filterCanceled(status) {
-    this.plannerService.planners = this.plannerService.planners.filter(planners => {
+    this.plannerService.planners = this.plannerService.planners.filter(planners => planners.status === status);
+    /*this.plannerService.planners = this.plannerService.planners.filter(planners => {
       if ( planners.status === 'Cancelado') {
         if (planners.belongsTo === 'none' ||  planners.belongsTo == null) { // se ele for pai
           this.filterPlanners = planners;
@@ -78,17 +78,15 @@ export class PlannerComponent implements OnInit, OnDestroy {
         }
       }
     });
-    this.plannerService.planners = [...this.filterPlanners, ...this.filterSubplanners];
+    this.plannerService.planners = [...this.filterPlanners, ...this.filterSubplanners];*/
   }
 
   filterOnProgress() {
-    this.plannerService.planners.filter(planners => planners.status === 'Aberto');
+    this.plannerService.planners = this.plannerService.planners.filter(planners => planners.status === 'Aberto');
   }
 
   filterFinished() {
-    this.aux = 'block';
-    this.aux1 = 'none';
-    // this.plannerService.planners.filter(planners => planners.status === 'Concluído');
+    this.plannerService.planners = this.plannerService.planners.filter(planners => planners.status === 'Concluído');
   }
 
   edit(planner) {

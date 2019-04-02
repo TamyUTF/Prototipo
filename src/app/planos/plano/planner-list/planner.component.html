@@ -4,19 +4,19 @@
         <mat-icon >search</mat-icon>
       </button>
       <mat-menu class="menu-filter" #filter="matMenu">
-        <button mat-menu-item (click)="getAll()">
+        <button mat-menu-item (click)="plannerService.getAll()">
           <mat-icon >reorder</mat-icon>
           <span>Todos os planos</span>
         </button>
-      <button mat-menu-item (click)="filterFinished('Concluído')">
+      <button mat-menu-item (click)="filterFinished()">
         <mat-icon >check</mat-icon>
         <span>Concluídos</span>
       </button>
-      <button mat-menu-item (click)="filterCanceled('Cancelado')">
+      <button mat-menu-item (click)="filterCanceled()">
         <mat-icon >block</mat-icon>
         <span>Cancelados</span>
       </button>
-      <button mat-menu-item (click)="filterOnProgress('Aberto')">
+      <button mat-menu-item (click)="filterOnProgress()">
         <mat-icon >play_arrow</mat-icon>
         <span>Em aberto</span>
       </button>
@@ -26,14 +26,6 @@
         <mat-icon >add</mat-icon>
       </button>
   </mat-card>
-  <ng-container>
-    desapertei botao
-  </ng-container>
-
-  <ng-container>
-    apertei botao
-  </ng-container>
-  
 
     <div class = "planner-list" *ngIf = "plannerService.planners as planners" >
       <mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
