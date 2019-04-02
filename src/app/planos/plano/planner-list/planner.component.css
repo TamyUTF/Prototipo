@@ -71,6 +71,11 @@
 .planner-expansion .menu {
     margin:auto;
 }
+
+.planner-item h4{
+    width: 100%;
+}
+
 .subPlanner-info {
     min-width: 50%;
     flex-direction: column;

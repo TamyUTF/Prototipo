@@ -32,55 +32,55 @@
         <div class = "planner-expansion" *ngFor = "let planner of planners" cdkDrag>
           <mat-expansion-panel *ngIf = "planner.belongsTo === null || planner.belongsTo === 'none'">
           <mat-expansion-panel-header >
-              <div class="menu">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="edit(planner)">
-                      <mat-icon>edit</mat-icon>
-                      <span>Editar</span>
-                    </button>
-                    <button mat-menu-item (click)="view(planner)">
-                      <mat-icon>remove_red_eye</mat-icon>
-                      <span>Visualizar</span>
-                    </button>
-                    <button mat-menu-item [matMenuTriggerFor]="status">
-                      <mat-icon>shutter_speed</mat-icon>
-                      <span>Mudar status</span>
-                    </button>
-                    <button mat-menu-item (click)='delete(planner)'>
-                      <mat-icon>delete</mat-icon>
-                      <span>Remover</span>
-                    </button>
-                </mat-menu>
-                <mat-menu #status ="matMenu">
-                  <button mat-menu-item (click)="changeStatus(planner, 'start')">
-                    <mat-icon>play_arrow</mat-icon>
-                    <span>Iniciar</span>
-                  </button>
-                  <button mat-menu-item (click)="changeStatus(planner, 'end')">
-                    <mat-icon>check</mat-icon>
-                    <span>Concluir</span>
-                  </button>
-                  <button mat-menu-item (click)="pause(planner)">
-                    <mat-icon>pause</mat-icon>
-                    <span>Suspender</span>
-                  </button>
-                  <button mat-menu-item (click)="cancel(planner)">
-                    <mat-icon>block</mat-icon>
-                    <span>Cancelar</span>
-                  </button>
-                </mat-menu>
-              </div>
-              <mat-panel-title>
+            <mat-list>
+              <mat-list-item class = "planner-item">
                 <h4>{{planner.name}}</h4>
-              </mat-panel-title>
-              <mat-panel-description>
                 <div class="charge-info">
                   {{planner.charge}} <img src="../../../../assets/user.png"/>
                 </div>
-              </mat-panel-description>
+                <div class="menu">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="edit(planner)">
+                          <mat-icon>edit</mat-icon>
+                          <span>Editar</span>
+                        </button>
+                        <button mat-menu-item (click)="view(planner)">
+                          <mat-icon>remove_red_eye</mat-icon>
+                          <span>Visualizar</span>
+                        </button>
+                        <button mat-menu-item [matMenuTriggerFor]="status">
+                          <mat-icon>shutter_speed</mat-icon>
+                          <span>Mudar status</span>
+                        </button>
+                        <button mat-menu-item (click)='delete(planner)'>
+                          <mat-icon>delete</mat-icon>
+                          <span>Remover</span>
+                        </button>
+                    </mat-menu>
+                    <mat-menu #status ="matMenu">
+                      <button mat-menu-item (click)="changeStatus(planner, 'start')">
+                        <mat-icon>play_arrow</mat-icon>
+                        <span>Iniciar</span>
+                      </button>
+                      <button mat-menu-item (click)="changeStatus(planner, 'end')">
+                        <mat-icon>check</mat-icon>
+                        <span>Concluir</span>
+                      </button>
+                      <button mat-menu-item (click)="pause(planner)">
+                        <mat-icon>pause</mat-icon>
+                        <span>Suspender</span>
+                      </button>
+                      <button mat-menu-item (click)="cancel(planner)">
+                        <mat-icon>block</mat-icon>
+                        <span>Cancelar</span>
+                      </button>
+                    </mat-menu>
+                  </div>
+                </mat-list-item>
+              </mat-list>
         </mat-expansion-panel-header>
         <div *ngFor = "let subPlanner of planners">
           <div *ngIf = "subPlanner.belongsTo === planner.name">

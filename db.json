@@ -1,25 +1,6 @@
 {
   "planners": [
     {
-      "name": "Plano 1",
-      "type": "Tipo 1",
-      "charge": "Responsável 1",
-      "start": "2019-03-03T03:00:00.000Z",
-      "end": "2019-03-29T03:00:00.000Z",
-      "status": "Suspendido",
-      "belongsTo": "Plano 2",
-      "details": {
-        "description": "Plano 1 referente aos planos para tomada de decisões.",
-        "involveds": [
-          "Envolvido 1",
-          "Envolvido 2",
-          "Envolvido 3"
-        ],
-        "price": 300
-      },
-      "id": 1
-    },
-    {
       "name": "Plano 2",
       "type": "Tipo 2",
       "charge": "Tamyres ",
@@ -53,7 +34,8 @@
         ],
         "price": "700.00"
       },
-      "id": 3
+      "id": 3,
+      "status": "Cancelado"
     },
     {
       "id": 5,
@@ -96,7 +78,7 @@
       "charge": "Bla",
       "start": "2019-03-15T03:00:00.000Z",
       "end": "2019-05-01T03:00:00.000Z",
-      "status": "Aberto",
+      "status": "Cancelado",
       "belongsTo": "Plano 6",
       "details": {
         "description": "asdasdasds",
@@ -218,6 +200,10 @@
     {
       "id": 8,
       "type": "Tipo 20"
+    },
+    {
+      "id": 9,
+      "type": "Tipo 23"
     }
   ],
   "involveds": [
@@ -248,6 +234,10 @@
     {
       "id": 7,
       "involved": "Joãozinho"
+    },
+    {
+      "id": 8,
+      "involved": "Tamyres"
     }
   ]
 }
