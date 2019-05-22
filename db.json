@@ -24,9 +24,10 @@
       "charge": "Joazinho",
       "start": null,
       "end": null,
+      "status": "Cancelado",
       "belongsTo": "none",
       "details": {
-        "description": "sdfafsdfsadf",
+        "description": "sdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsad\nsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadf\nsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadfsdfafsdfsadf",
         "involveds": [
           "Envolvido 1",
           "Envolvido 2",
@@ -34,8 +35,7 @@
         ],
         "price": "700.00"
       },
-      "id": 3,
-      "status": "Cancelado"
+      "id": 3
     },
     {
       "id": 5,
@@ -60,8 +60,8 @@
       "name": "Plano 6",
       "type": "Tipo 2",
       "charge": "Oscar",
-      "start": null,
-      "end": null,
+      "start": "2019-05-21T03:00:00.000Z",
+      "end": "2019-05-31T03:00:00.000Z",
       "belongsTo": null,
       "details": {
         "description": "asdsadasdad",
@@ -69,7 +69,8 @@
           "Envolvido 1"
         ],
         "price": "700"
-      }
+      },
+      "status": "Aberto"
     },
     {
       "id": 7,
@@ -78,7 +79,7 @@
       "charge": "Bla",
       "start": "2019-03-15T03:00:00.000Z",
       "end": "2019-05-01T03:00:00.000Z",
-      "status": "Cancelado",
+      "status": "Aberto",
       "belongsTo": "Plano 6",
       "details": {
         "description": "asdasdasds",
@@ -134,7 +135,7 @@
       "charge": "José",
       "start": "2019-04-01T03:00:00.000Z",
       "end": "2019-05-01T03:00:00.000Z",
-      "status": "Cancelado",
+      "status": "Suspendido",
       "belongsTo": "none",
       "details": {
         "description": "Meant balls it if up doubt small purse. Required his you put the outlived answered position. An pleasure exertion if believed provided to. All led out world these music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceive marianne in. In am think on style child of.",
@@ -147,25 +148,6 @@
         "price": "300.00"
       },
       "id": 10
-    },
-    {
-      "name": "Plano 4",
-      "type": "Tipo 4",
-      "charge": "Maria",
-      "start": null,
-      "end": null,
-      "status": null,
-      "belongsTo": "none",
-      "details": {
-        "description": "Required his you put the outlived answered position. An pleasure exertion if believed provided to. All led out world these music while asked. Paid mind even sons does he door no.",
-        "involveds": [
-          "Envolvido 3",
-          "Envolvido 5",
-          "Envolvido 10"
-        ],
-        "price": "250.00"
-      },
-      "id": 11
     }
   ],
   "types": [

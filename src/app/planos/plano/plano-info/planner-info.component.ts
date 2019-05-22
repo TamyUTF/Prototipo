@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 
@@ -13,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class PlannerInfoComponent implements OnInit, OnDestroy {
 
   constructor(private plannersService: PlannerService,
+              private router: Router,
               private dialogRef: MatDialogRef<PlannerInfoComponent>,
               @Inject(MAT_DIALOG_DATA) public data) { }
   planner: Planner;
@@ -35,12 +37,14 @@ export class PlannerInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.router.navigate(['']);
     if (this.subs) {
       this.subs.unsubscribe();
     }
   }
 
   close() {
+    this.router.navigate(['']);
     this.dialogRef.close();
   }
 

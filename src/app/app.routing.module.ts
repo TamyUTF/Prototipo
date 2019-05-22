@@ -3,17 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { PlannerComponent } from './planos/plano/planner-list/planner.component';
 import { PlannerDashboardComponent } from './planos/plano/planner-dashboard/planner-dashboard.component';
-import { BottomSheetComponent } from './planos/shared/bottom-sheet/bottom-sheet.component';
 
-
-const appRoutes: Routes = [
-    { path: '', component: PlannerComponent},
-    { path: 'dashboard', component: PlannerDashboardComponent},
-    { path: 'new', component: BottomSheetComponent}
+const Routes = [
+  { path: '', redirectTo: 'planner', pathMatch: 'full'},
+  { path: 'planner', component: PlannerComponent},
+  { path: 'dashboard', component: PlannerDashboardComponent}
 ];
 
+
 @NgModule ({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(Routes)],
   exports: [RouterModule]
 })
 

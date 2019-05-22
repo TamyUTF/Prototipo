@@ -1,46 +1,51 @@
-<mat-toolbar>
-  <h1>{{planner.name}}</h1>
-  <button mat-icon-button (click)="close()">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-toolbar>
+<mat-dialog-content class="mat-dialog">
 
-<div class="planner-info">
-  <span><b>Nome:</b> {{planner.name}}</span><br>
-  <span><b>Tipo:</b> {{planner.type}}</span><br>
-  <span><b>Responsável:</b> {{planner.charge}}</span><br>
-
-  <ng-container *ngIf="planner.start !== null; else startDate">
-    <span><b>Início:</b> {{planner.start | date: 'dd/MM/yyyy'}}</span><br>
-  </ng-container>
-  <ng-template #startDate>
-    <span><b>Início:</b>Ainda não foi definido.</span><br>
-  </ng-template>
-
-  <ng-container *ngIf="planner.end !== null; else endDate">
-    <span><b>Fim:</b> {{planner.end  | date: 'dd/MM/yyyy'}}</span><br>
-  </ng-container>
-
-  <ng-template #endDate>
-    <span><b>Fim:</b>Ainda não foi definido.</span><br>
-  </ng-template>
-
-  <ng-container *ngIf= "planner.belongsTo == none || planner.belongsTo == null; else subPlanner">
-  </ng-container>
-
-  <ng-template #subPlanner>
-    <span ><b>Pertence ao plano:</b> {{planner.belongsTo}}</span><br>
-  </ng-template>
-
-  <ng-container *ngIf="planner.status !== null && planner.start !==null && planner.end !== null; else status">
-    <span><b>Status:</b> {{planner.status}}</span><br>
-  </ng-container>
-  <ng-template #status>
-    <span><b>Status:</b> Aguardando início</span><br>
-  </ng-template>
-
-  <span><b>Envolvidos:</b> {{planner.details.involveds}}</span><br>
-  <span><b>Preço:</b> R${{planner.details.price}}</span><br>
-  <span><b>Descrição:</b> {{planner.details.description}}</span><br>
-
-</div>
+  <mat-toolbar>
+    <h1>{{planner.name}}</h1>
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <div class="planner-info">
+    <span><b>Nome:</b> {{planner.name}}</span><br>
+    <span><b>Tipo:</b> {{planner.type}}</span><br>
+    <span><b>Responsável:</b> {{planner.charge}}</span><br>
+  
+    <ng-container *ngIf="planner.start !== null; else startDate">
+      <span><b>Início:</b> {{planner.start | date: 'dd/MM/yyyy'}}</span><br>
+    </ng-container>
+    <ng-template #startDate>
+      <span><b>Início:</b>Ainda não foi definido.</span><br>
+    </ng-template>
+  
+    <ng-container *ngIf="planner.end !== null; else endDate">
+      <span><b>Fim:</b> {{planner.end  | date: 'dd/MM/yyyy'}}</span><br>
+    </ng-container>
+  
+    <ng-template #endDate>
+      <span><b>Fim:</b>Ainda não foi definido.</span><br>
+    </ng-template>
+  
+    <ng-container *ngIf= "planner.belongsTo == 'none' || planner.belongsTo == null; else subPlanner">
+    </ng-container>
+  
+    <ng-template #subPlanner>
+      <span ><b>Pertence ao plano:</b> {{planner.belongsTo}}</span><br>
+    </ng-template>
+  
+    <ng-container *ngIf="planner.status !== null && planner.start !==null && planner.end !== null; else status">
+      <span><b>Status:</b> {{planner.status}}</span><br>
+    </ng-container>
+    <ng-template #status>
+      <span><b>Status:</b> Aguardando início</span><br>
+    </ng-template>
+  
+    <span><b>Envolvidos:</b> {{planner.details.involveds}}</span><br>
+    <span><b>Preço:</b> R${{planner.details.price}}</span><br>
+    <div  class="description-info">
+      <span><b>Descrição:</b> {{planner.details.description}}</span><br>
+    </div>
+  
+  </div>
+</mat-dialog-content>

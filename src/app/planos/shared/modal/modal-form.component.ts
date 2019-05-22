@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { TypesService } from '../types.service';
 import { InvolvedsService } from './../involveds.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-form',
@@ -13,6 +14,7 @@ import { InvolvedsService } from './../involveds.service';
 })
 export class ModalFormComponent implements OnInit, OnDestroy {
   constructor(private fBuilder: FormBuilder,
+              private router: Router,
               private dialogRef: MatDialogRef<ModalFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data,
               private typesService: TypesService,
@@ -32,6 +34,7 @@ export class ModalFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.router.navigate(['']);
     if (this.subs !== undefined) {
       this.subs.unsubscribe();
     }
@@ -68,10 +71,12 @@ export class ModalFormComponent implements OnInit, OnDestroy {
   }
 
   cancel() {
+    this.router.navigate(['']);
     this.dialogRef.close();
   }
 
   confirm() {
+    this.router.navigate(['']);
     this.dialogRef.close(this.data.type);
   }
 }

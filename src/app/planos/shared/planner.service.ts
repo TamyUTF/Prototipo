@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
-import { map } from 'rxjs/operators';
 
 import { Planner } from './planner.model';
 

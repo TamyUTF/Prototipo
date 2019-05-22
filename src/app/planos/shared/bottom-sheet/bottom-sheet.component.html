@@ -16,7 +16,7 @@
                 formControlName = "name" />
         <mat-error *ngIf = "form.get('name').touched && form.get('name').hasError">Insira o nome do plano</mat-error>
       </mat-form-field>
-      <div class = "planner-type">
+      <div class = "flexInput">
         <mat-form-field>
         <mat-select placeholder = "Tipo do plano"
                     floatLabel = "always"
@@ -82,8 +82,8 @@
         </textarea>
         <mat-error *ngIf = "form.get('details.description').touched && form.get('details.description').hasError">Descreva o plano</mat-error>
       </mat-form-field>
-      <div class="planner-involveds">
-        <mat-form-field>
+      <div class = "flexInput">
+        <mat-form-field >
           <mat-select placeholder="Pessoas interessadas"
                       formControlName = "involveds"
                       multiple>
@@ -99,7 +99,7 @@
       </div>
 
       <mat-form-field>
-        <span matPrefix>R$</span>
+        <span matPrefix>R$ </span>
         <input matInput placeholder=" Custo estimado"
                         formControlName = "price"/>
           <mat-error *ngIf = "form.get('details.price').touched && form.get('details.price').hasError">Informe o capital necessário</mat-error>

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
@@ -12,6 +13,7 @@ import { PlannerService } from './../../planner.service';
 export class ModalStatusComponent implements OnInit, OnDestroy {
 
   constructor(private fBuilder: FormBuilder,
+              private router: Router,
               private dialogRef: MatDialogRef<ModalStatusComponent>,
               @Inject(MAT_DIALOG_DATA) public data,
               private plannersService: PlannerService) {
@@ -41,6 +43,7 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
   }
 
   cancel() {
+    this.router.navigate(['']);
     this.dialogRef.close();
   }
 
@@ -63,7 +66,7 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
       this.subs = this.plannersService.updatePlanner(this.data.planner.id, this.data.planner)
       .subscribe(res => {
         this.plannersService.openSnackBar('Status alterado com sucesso', 'Ok!');
-        this.dialogRef.close();
+        this.cancel();
       },
       error => console.error(error));
     }
@@ -79,6 +82,7 @@ export class ModalStatusComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.router.navigate(['']);
     if (this.subs) {
       this.subs.unsubscribe();
     }

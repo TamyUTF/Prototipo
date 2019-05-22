@@ -12,6 +12,7 @@ import { PlannerService } from './../../shared/planner.service';
 import { BottomSheetComponent } from './../../shared/bottom-sheet/bottom-sheet.component';
 import { InvolvedsService } from './../../shared/involveds.service';
 import { TypesService } from './../../shared/types.service';
+import { ModalConfirmComponent } from '../../shared/modal/modal-confirm/modal-confirm.component';
 
 @Component({
   selector: 'app-planner',
@@ -37,6 +38,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
   panelOpen: false;
   aux = 'none';
   aux1 = 'block';
+
   ngOnInit() {
 
   }
@@ -44,8 +46,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
   view(planner) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.direction = 'ltr';
-    dialogConfig.width = '500px';
-    dialogConfig.height = '400px';
+    dialogConfig.width = '700px';
     dialogConfig.data = {
       id: planner.id
     };
@@ -67,7 +68,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
     }
   }
 
-  filterCanceled(status) {
+  filterCanceled(status) {// consertar
     this.plannerService.planners = this.plannerService.planners.filter(planners => planners.status === status);
     /*this.plannerService.planners = this.plannerService.planners.filter(planners => {
       if ( planners.status === 'Cancelado') {
@@ -81,11 +82,11 @@ export class PlannerComponent implements OnInit, OnDestroy {
     this.plannerService.planners = [...this.filterPlanners, ...this.filterSubplanners];*/
   }
 
-  filterOnProgress() {
+  filterOnProgress() { // consertar
     this.plannerService.planners = this.plannerService.planners.filter(planners => planners.status === 'Aberto');
   }
 
-  filterFinished() {
+  filterFinished() {// consertar
     this.plannerService.planners = this.plannerService.planners.filter(planners => planners.status === 'Concluído');
   }
 
@@ -131,13 +132,20 @@ export class PlannerComponent implements OnInit, OnDestroy {
   }
 
   delete(planner) {
-    this.deleteSubs = this.plannerService.deletePlanner(planner.id).subscribe(
-      res => {
-        this.plannerService.openSnackBar('Plano deletado com sucesso.', 'Ok!');
-        this.plannerService.getAll();
-      },
-      error => console.error(error)
-    );
+    console.log('estou aq');
+    const dialogRef = this.modal.open(ModalConfirmComponent, { });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result === 'true') {
+        this.deleteSubs = this.plannerService.deletePlanner(planner.id).subscribe(
+          res => {
+            this.plannerService.openSnackBar('Plano deletado com sucesso.', 'Ok!');
+            this.plannerService.getAll();
+          },
+          error => console.error(error)
+        );
+      }
+    });
   }
 
   openBottomSheet(data?: any) {

@@ -13,12 +13,14 @@ import { AppRoutingModule } from './app.routing.module';
 import { InvolvedsService } from './planos/shared/involveds.service';
 import { TypesService } from './planos/shared/types.service';
 import { ModalStatusComponent } from './planos/shared/modal/modal-status/modal-status.component';
+import { ModalConfirmComponent } from './planos/shared/modal/modal-confirm/modal-confirm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalFormComponent,
-    ModalStatusComponent
+    ModalStatusComponent,
+    ModalConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { ModalStatusComponent } from './planos/shared/modal/modal-status/modal-s
   bootstrap: [AppComponent],
   entryComponents: [
     ModalFormComponent,
-    ModalStatusComponent]
+    ModalStatusComponent,
+    ModalConfirmComponent]
 })
 export class AppModule { }

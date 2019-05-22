@@ -4,7 +4,8 @@
     padding: 0;
     margin: 0;
     background-color: rgba(221, 221, 221, 0.651);
-    border-bottom: 5px solid rgb(61, 150, 223);
+    border-left: 5px solid rgb(61, 150, 223);
+    border-bottom: 1px solid #cacaca;
 }
 
 .mat-toolbar h2 {
@@ -14,7 +15,7 @@
 }
 
 .form {
-    margin: 10px;
+    margin: 15px;
     height: 100%;
     flex-direction: column;
     box-sizing: border-box;
@@ -23,6 +24,14 @@
     align-items: stretch;
     max-width: 100%;
     margin-bottom: 30px;
+}
+
+.form .flexInput {
+    display: flex;
+}
+
+.form .mat-form-field {
+    width: 100%;
 }
 
 .submit {

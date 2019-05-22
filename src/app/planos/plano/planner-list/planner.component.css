@@ -1,13 +1,13 @@
 .planners {
+    width: 900px;
     position: relative;
     top: 0px;
-
 }
 
 .card-title {
-    width: 50em;
-    height: 70px;
+    height: 100px;
     margin: 10px 0px;
+    box-sizing: border-box;
     box-shadow: 2px 2px 3px rgb(0, 0, 0, .2);
     border-left: 5px solid rgb(61, 150, 223);
     display: flex;
@@ -19,6 +19,7 @@
 }
 
 .card-title h2 {
+    font-size: 25pt;
     margin: 20px 0px 20px 40px;
     color: #575757;
     width: 100%;
@@ -34,10 +35,19 @@
     padding: 0px 5px 5px 3px;
 }
 
+.mat-expansion-panel  .main-planner {
+    margin: 0px;
+}
+
+.main-planner .planner-info {
+    padding: 0px;
+}
+
 .charge-info {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    align-items: center
 }
 
 .charge-info img {
@@ -72,11 +82,12 @@
     margin:auto;
 }
 
-.planner-item h4{
+
+.mat-expansion-panel-header h4{
     width: 100%;
 }
 
-.subPlanner-info {
+.planner-info {
     min-width: 50%;
     flex-direction: column;
     padding-left: 20px;
@@ -89,7 +100,8 @@
 }
 
 .mat-expansion-panel-header {
-    background-color: #cfcfcf73;
+    background-color: #cfcfcf27;
+    margin: 0px;
 }
 
 .mat-expansion-panel-header-description {
@@ -101,6 +113,7 @@
     place-content: center space-around;
     align-items: center;
     border-bottom: 1px solid #cacaca;
+    border-top: 1px solid #cacaca;
 }
 
 .subplanner-item h4{
@@ -155,8 +168,8 @@
 .planner4 {
     border-left: 5px solid #ff1a1a;
     margin: 5px 0px;
-    background-color: #e2e2e2;
     color: #575757;
+    background-color: #cfcfcf27;
 }
 
 .planner5 {

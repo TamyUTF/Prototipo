@@ -52,6 +52,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.router.navigate(['']);
     if (this.subsModal) {
       this.subsModal.unsubscribe();
     }
@@ -165,7 +166,7 @@ export class BottomSheetComponent implements OnInit, OnDestroy {
   }
 
   close() {
-    this.router.navigate(['']);
+    this.router.navigate(['planner']);
     this.bottomSheetRef.dismiss(this.data);
   }
 

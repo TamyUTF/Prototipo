@@ -99,3 +99,7 @@
 .mat-drawer-inner-container {
     overflow: hidden;
 }
+
+#cdk-overlay-2 .cdk-overlay-pane  {
+    overflow: auto;
+}
